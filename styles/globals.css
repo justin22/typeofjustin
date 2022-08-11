@@ -1,0 +1,17 @@
+@import url(https://fonts.bunny.net/css?family=niramit:400,400i,500,500i,600,700);
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.prose a {
+  @apply text-blue-500;
+}
+
+.prose a:hover {
+  @apply text-blue-700;
+}
+
+.prose a:visited {
+  @apply text-purple-700;
+}

@@ -1,10 +1,20 @@
+import React from "react";
 import githubAxiosInstance from "utils/GithubAxiosInstance";
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm'
 import { parseDate } from "utils/DateUtil";
+import { GetServerSideProps } from "next";
 
+type Props = {
+  data: {
+    title: string,
+    body: string, 
+    id: number,
+    updated_at: string
+  }
+}
 
-const Post = ({ data }) => {
+const Post: React.FC = ({ data }: Props) => {
 
   return (
     <>
@@ -20,7 +30,7 @@ const Post = ({ data }) => {
   )
 }
 
-export async function getServerSideProps(context) {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   const { data } = await githubAxiosInstance.get(`issues/${context.params.id}`)
   return {
     props: { data }

@@ -1,8 +1,8 @@
 const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
-function parseDate(string) {
+function parseDate(stringDate: string): string {
   try {
-    const date = new Date(string);
+    const date = new Date(stringDate);
     const month = date.getMonth();
     const year = date.getFullYear();
     const day = date.getDate();
@@ -12,6 +12,6 @@ function parseDate(string) {
   } 
 }
 
-module.exports = {
+export {
   parseDate
 }

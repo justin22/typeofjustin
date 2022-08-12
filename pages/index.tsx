@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Posts from '../components/posts/Index';
 import githubAxiosInstance from 'utils/GithubAxiosInstance';
+import { GetServerSideProps } from 'next';
 
 const Home = ({ posts }) => {
 
@@ -32,7 +33,7 @@ const Introduction = () => (
   </div>
 )
 
-export async function getServerSideProps() {
+export const getServerSideProps: GetServerSideProps = async () => {
   const { data } = await githubAxiosInstance.get(`issues?state=closed`)
   return {
     props: { posts: data }

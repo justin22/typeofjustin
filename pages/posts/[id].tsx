@@ -31,7 +31,7 @@ const Post: React.FC = ({ data }: Props) => {
         <p className="text-md text-gray-500"> Last updated on {parseDate(data.updated_at)} </p>
       </div>
 
-      <div className="prose text-lg md:text-2xl font-thin text-gray-700 md:leading-relaxed">
+      <div className="prose text-lg md:text-xl font-thin text-gray-700 md:leading-relaxed">
         <ReactMarkdown children={data.body} remarkPlugins={[remarkGfm]} />
       </div>
     </article>

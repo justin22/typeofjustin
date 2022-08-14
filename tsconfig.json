@@ -6,6 +6,7 @@
         "utils/*"
       ]
     },
+    "moduleResolution":"node",
     "removeComments": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,

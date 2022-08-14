@@ -1,13 +1,12 @@
-import PostItem from "./PostItem.tsx";
+import PostItem from "./PostItem";
 
 const Posts = ({ posts }) => {
 
   return (
     <>
       {
-        posts?.map((post, index) => (
+        posts?.map(post => (
           <PostItem
-            count={index + 1}
             key={post.id}
             post={post}
           />

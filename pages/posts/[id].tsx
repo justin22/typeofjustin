@@ -4,6 +4,8 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm'
 import { parseDate } from "utils/DateUtil";
 import { GetServerSideProps } from "next";
+import Head from "next/head";
+import Link from "next/link";
 
 type Props = {
   data: {
@@ -17,6 +19,12 @@ type Props = {
 const Post: React.FC = ({ data }: Props) => {
 
   return (
+    <>
+    <Head>
+      <title> {data.title} - typeof just.in </title>
+      <meta name="description" content={`A blog by Justin George - ${data.title}`} />
+      <link rel="icon" href="/favicon.ico" />
+    </Head>
     <article>
       <div className="mb-10">
         <h1 className="text-4xl md:text-6xl font-normal md:font-normal mb-4 text-gray-700"> {data.title} </h1>
@@ -27,6 +35,12 @@ const Post: React.FC = ({ data }: Props) => {
         <ReactMarkdown children={data.body} remarkPlugins={[remarkGfm]} />
       </div>
     </article>
+
+    <p className="mt-8 hover:underline text-purple-600">
+      <Link href={"/"}> ← Go to home page </Link>
+    </p>
+
+    </>
   )
 }
 

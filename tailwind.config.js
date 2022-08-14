@@ -7,7 +7,7 @@ module.exports = {
   theme: {
     extend: {},
     fontFamily: {
-      'body': ['Niramit', 'sans-serif']
+      
     }
   },
   plugins: [

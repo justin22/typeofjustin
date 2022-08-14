@@ -1,8 +1,13 @@
-@import url(https://fonts.bunny.net/css?family=niramit:400,400i,500,500i,600,700);
+@import url(https://fonts.bunny.net/css?family=dm-sans:400,400i,500,500i,700,700i);
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  background-color: #fff7d6;
+  font-family: 'DM Sans', sans-serif;
+}
 
 .prose a {
   @apply text-blue-500;

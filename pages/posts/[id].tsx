@@ -23,7 +23,7 @@ const Post: React.FC = ({ data }: Props) => {
     <Head>
       <title> {data.title} - typeof just.in </title>
       <meta name="description" content={`A blog by Justin George - ${data.title}`} />
-      <link rel="icon" href="/favicon.ico" />
+      <link rel="icon" href="/favicon.png" />
     </Head>
     <article>
       <div className="mb-10">

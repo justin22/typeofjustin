@@ -9,7 +9,7 @@ const Header = () => (
         </Link>
       </span>
       <span className="invisible ml-1 group-hover:visible opacity-0 group-hover:opacity-100 transition-all delay-100 ease-in-out" title="programmer">
-        👨‍💻
+        👨🏻‍💻
       </span>
     </div>
   </div>

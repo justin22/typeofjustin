@@ -3,9 +3,9 @@ import { parseDate } from "utils/DateUtil";
 
 const PostItem: React.FC = ({ post }) => {
   return (
-    <article>
-      <Link href={`/posts/${post.number}`} key={post.id} passHref>
-        <div className="mb-8 cursor-pointer group">
+    <Link href={`/posts/${post.number}`} key={post.id} passHref tabIndex={0}>
+      <article>
+        <div className="mb-8 cursor-pointer group" tabIndex={0}>
           <div className="flex items-start">
             <div className="pr-4 py-2 group-hover:rotate-12 transition-all group-hover:text-purple-600">
               →
@@ -16,8 +16,8 @@ const PostItem: React.FC = ({ post }) => {
             </div>
           </div>
         </div>
-      </Link>
-    </article>
+      </article>
+    </Link>
   )
 }
 

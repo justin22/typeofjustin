@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { parseDate } from "utils/DateUtil";
 
-const PostItem: React.FC = ({ post }) => {
+const PostItem = ({ post }) => {
   return (
     <Link href={`/posts/${post.number}`} key={post.id} passHref tabIndex={0}>
       <article>

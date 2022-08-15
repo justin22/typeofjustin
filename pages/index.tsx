@@ -2,9 +2,12 @@ import Head from 'next/head';
 import Posts from '../components/posts/Index';
 import githubAxiosInstance from 'utils/GithubAxiosInstance';
 import { GetServerSideProps } from 'next';
+import { Posts as PostType } from 'types/post';
 
-const Home = ({ posts }) => {
+type Props = { posts: PostType }
 
+const Home: React.FC = (props: Props) => {
+  const { posts } = props;
   return (
     <div>
       <Head>

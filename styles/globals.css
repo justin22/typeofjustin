@@ -5,18 +5,11 @@
 @tailwind utilities;
 
 body {
-  background-color: #fff7d6;
   font-family: 'DM Sans', sans-serif;
 }
 
-.prose a {
-  @apply text-blue-500;
-}
-
-.prose a:hover {
-  @apply text-blue-700;
-}
-
-.prose a:visited {
-  @apply text-purple-700;
+@media (prefers-color-scheme: dark) {
+  body {
+    @apply bg-gray-900
+  }
 }

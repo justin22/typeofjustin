@@ -1,11 +1,12 @@
-@import url(https://fonts.bunny.net/css?family=dm-sans:400,400i,500,500i,700,700i);
+@import url(https://fonts.bunny.net/css?family=mukta:300,400,500,600,700);
+
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Mukta', sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {

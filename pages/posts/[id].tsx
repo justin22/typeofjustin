@@ -7,6 +7,9 @@ import { GetServerSideProps } from "next";
 import Head from "next/head";
 import Link from "next/link";
 import { Post } from "types/post";
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+
+
 
 type Props = { post: Post };
 
@@ -21,16 +24,38 @@ const Post: React.FC = (props: Props) => {
       </Head>
       <article>
         <div className="mb-10">
-          <h1 className="text-4xl md:text-6xl font-normal md:font-normal mb-4 text-gray-700 dark:text-gray-200"> {post.title} </h1>
-          <p className="text-md text-gray-500 dark:text-gray-300"> Last updated on {parseDate(post.updated_at)} </p>
+          <h1 className="text-4xl md:text-6xl tracking-wide font-normal md:font-normal mb-4 text-gray-700 dark:text-gray-200"> {post.title} </h1>
+          <p className="text-md text-gray-500 dark:text-gray-400"> Last updated on {parseDate(post.updated_at)} </p>
         </div>
 
-        <div 
+        <div
           className="prose dark:prose-invert 
-          text-lg md:text-xl font-thin md:leading-relaxed
+          leading-relaxed tracking-wide
         dark:prose-a:text-teal-500 hover:prose-a:text-teal-700"
         >
-          <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.body}</ReactMarkdown>
+          <ReactMarkdown
+            remarkPlugins={[remarkGfm]}
+            components={{
+              code({ node, inline, className, children, ...props }) {
+                const match = /language-(\w+)/.exec(className || '')
+                return !inline && match ? (
+                  <SyntaxHighlighter
+                    children={String(children).replace(/\n$/, '')}
+                    language={match[1]}
+                    PreTag="div"
+                    {...props}
+                  />
+                ) : (
+                  <code className={className} {...props}>
+                    {children}
+                  </code>
+                )
+              }
+            }}
+
+          >
+            {post.body}
+          </ReactMarkdown>
         </div>
       </article>
 

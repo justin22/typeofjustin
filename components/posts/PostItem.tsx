@@ -3,9 +3,9 @@ import { parseDate } from "utils/DateUtil";
 
 const PostItem = ({ post }) => {
   return (
-    <Link href={`/posts/${post.number}`} key={post.id} passHref tabIndex={0}>
-      <article>
-        <div className="mb-8 cursor-pointer group" tabIndex={0}>
+    <Link href={`/posts/${post.number}`} key={post.id} passHref>
+      <a>
+        <div className="mb-8 cursor-pointer group">
           <div className="flex items-start">
             <div className="pr-4 py-2 group-hover:rotate-12 transition-all group-hover:text-teal-600 dark:group-hover:text-purple-4 dark:text-gray-500">
               →
@@ -16,7 +16,7 @@ const PostItem = ({ post }) => {
             </div>
           </div>
         </div>
-      </article>
+      </a>
     </Link>
   )
 }

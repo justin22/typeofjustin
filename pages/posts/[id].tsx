@@ -25,7 +25,7 @@ const Post: React.FC = (props: Props) => {
       <article>
         <div className="mb-10">
           <h1 className="text-4xl md:text-6xl tracking-wide font-normal md:font-normal mb-4 text-gray-700 dark:text-gray-200"> {post.title} </h1>
-          <p className="text-md text-gray-500 dark:text-gray-400"> Last updated on {parseDate(post.updated_at)} </p>
+          <p className="text-md text-gray-500 dark:text-gray-400"> {parseDate(post.created_at)} </p>
         </div>
 
         <div

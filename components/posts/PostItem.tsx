@@ -12,7 +12,7 @@ const PostItem = ({ post }) => {
             </div>
             <div>
               <h2 className="text-lg md:text-2xl text-gray-700 dark:text-gray-300 font-light group-hover:text-teal-600 dark:group-hover:text-teal-400"> {post.title} </h2>
-              <p className="font-light text-sm text-gray-500"> {parseDate(post.updated_at)} </p>
+            <p className="font-light text-sm text-gray-500"> {parseDate(post.created_at)} </p>
             </div>
           </div>
         </div>

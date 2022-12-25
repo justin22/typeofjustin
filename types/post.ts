@@ -3,7 +3,8 @@ export type Post = {
     number: number,
     title: string,
     body: string,
-    updated_at: string
+    updated_at: string,
+    created_at: string
 }
 
 export type Posts = [ Post ];

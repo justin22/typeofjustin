@@ -20,7 +20,7 @@ const Post: React.FC = (props: Props) => {
         <title> {post.title} - typeof just.in </title>
         <meta name="description" content={`A blog by Justin George - ${post.title}`} />
         <link rel="icon" href="/favicon.png" />
-        <meta property="og:image" content={`/api/og/title=${post.title}`} />
+        <meta property="og:image" content={`api/og/title=${post.title}`} />
       </Head>
       <article>
         <div className="mb-10">

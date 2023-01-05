@@ -10,7 +10,6 @@ import { Post } from "types/post";
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 
 
-
 type Props = { post: Post };
 
 const Post: React.FC = (props: Props) => {
@@ -21,6 +20,7 @@ const Post: React.FC = (props: Props) => {
         <title> {post.title} - typeof just.in </title>
         <meta name="description" content={`A blog by Justin George - ${post.title}`} />
         <link rel="icon" href="/favicon.png" />
+        <meta property="og:image" content={`/api/og/title=${post.title}`} />
       </Head>
       <article>
         <div className="mb-10">

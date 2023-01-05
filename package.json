@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@splitbee/web": "^0.3.0",
+    "@vercel/og": "^0.0.21",
     "axios": "^0.27.2",
     "next": "12.2.4",
     "nextjs-progressbar": "^0.0.14",

@@ -14,10 +14,11 @@ const Home: React.FC = (props: Props) => {
         <title> typeof just.in . A website by Justin George </title>
         <meta name="description" content="A personal website of Justin George" />
         <link rel="icon" href="/favicon.png" />
+        <meta property="og:image" content="/api/og" />
       </Head>
 
       <div>
-        <Posts 
+        <Posts
           posts={posts}
         />
       </div>

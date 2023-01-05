@@ -14,7 +14,7 @@ const Home: React.FC = (props: Props) => {
         <title> typeof just.in . A website by Justin George </title>
         <meta name="description" content="A personal website of Justin George" />
         <link rel="icon" href="/favicon.png" />
-        <meta property="og:image" content="api/og" />
+        <meta property="og:image" content={`${process.env.NEXT_PUBLIC_BASE_URL}/api/og`} />
       </Head>
 
       <div>

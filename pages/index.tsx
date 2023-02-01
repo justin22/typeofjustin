@@ -1,10 +1,17 @@
 import Head from 'next/head';
-import Posts from '../components/posts/Index';
-import githubAxiosInstance from 'utils/GithubAxiosInstance';
-import { GetServerSideProps } from 'next';
-import { Posts as PostType } from 'types/post';
+import { PostItem } from '../components/posts/Index';
+import { allPosts, Post } from 'contentlayer/generated'
 
-type Props = { posts: PostType }
+export async function getStaticProps() {
+  const posts = allPosts.filter(p => p.published).sort((a, b) => b.position - a.position).map(post => ({
+    title: post.title,
+    date: post.date,
+    slug: post.slug
+  }))
+  return { props: { posts } }
+}
+
+type Props = { posts: Post[] }
 
 const Home: React.FC = (props: Props) => {
   const { posts } = props;
@@ -18,20 +25,20 @@ const Home: React.FC = (props: Props) => {
       </Head>
 
       <div>
-        <Posts
-          posts={posts}
-        />
+        {
+          posts.map(post => {
+            return (
+              <PostItem
+                post={post}
+                key={post.slug}
+              />
+            )
+          })
+        }
       </div>
 
     </div>
   )
-}
-
-export const getServerSideProps: GetServerSideProps = async () => {
-  const { data } = await githubAxiosInstance.get(`issues?state=closed`)
-  return {
-    props: { posts: data }
-  }
 }
 
 export default Home;

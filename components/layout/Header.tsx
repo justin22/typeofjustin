@@ -8,12 +8,6 @@ const Header = () => (
           typeof just.in
         </Link>
       </span>
-      <span className="group-hover:text-teal-600 dark:group-hover:text-teal-300 
-        ml-1
-        invisible group-hover:visible group-hover:animate-ping" 
-        title="hooman">
-        = hooman
-      </span>
     </div>
   </div>
 )

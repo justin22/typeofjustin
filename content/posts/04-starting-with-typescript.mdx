@@ -1,0 +1,201 @@
+---
+title: Starting with TypeScript - 01
+date: 2022-12-23
+slug: starting-with-typescript-01
+position: 4
+published: true
+---
+TypeScript gives you some superpowers when you work with JavaScript. 
+JavaScript is a dynamically typed language. Let's see what I mean by that with an example.
+
+Let's say you have a variable called `name`.
+
+```javascript
+let name = 'JavaScript';
+```
+
+The data type of `name` is a string, but you can still assign values of other data types, `number` for instance. 
+```javascript
+let name = 'JavaScript';
+console.log(typeof name) // string
+
+name = 11;
+console.log(typeof name) // number
+```
+This might feel like a superpower, but it could lead to confusion about valid values and inconsistencies. 
+
+Typescript can help you to identify these at development time and show warnings if you try to assign different data types.
+
+> The first time I started with Typescript, I got annoyed and ended up giving the type `any` to everything 🫣, which negates the power of TypeScript. But this time, I'm more focused on learning it 🏁.
+
+## Basic data types
+Basic data types like string, number, and boolean can be used with TypeScript like below. 
+
+```javascript
+let name: string = 'JavaScript';
+let version: number = 2015,
+let isDeprecated: boolean = false;
+```
+
+Now, if you try the following thing, which is totally acceptable in JavaScript, 
+```javascript
+let name: string = 'JavaScript';
+name = 123; // ⛔️
+```
+typescript will show you a warning `  Type 'number' is not assignable to type 'string'. `
+
+## Arrays
+If you have an array of numbers, you can use the following syntax to add type safety to them. 
+
+```javascript
+const numbers: number[] = [1, 2, 3, 4];
+
+// If you try to add a string to the array, TypeScript will show you a warning, Type 'string' is not assignable to type 'number'.  
+```
+
+TypeScript will warn you in other operations like push and contact. 
+
+```javascript
+const languages: string[] = ['JavaScript', 'Java'];
+languages.push(2015) // ⛔️ _Argument of type 'number' is not assignable to parameter of type 'string'._
+```
+
+What do you do if your array can contain both numbers and strings?
+
+```javascript
+let mixedArray: Array< string| number> = [];
+mixedArray  = ['1', 2, 3]
+```
+
+## Object
+
+Consider the below object, 
+
+```javascript
+const language = {
+  name: 'JavaScript',
+  version: 2022
+}
+
+```
+You can try to modify the value of version to a string, `language.version = '2022'` and JavaScript won't complain. To add type safety, you can create a type for your `language` object. 
+
+```javascript
+type Language = {
+    name: string,
+    version: number,
+    isDeprecated: boolean
+}
+
+const language: Language = {
+  name: 'JavaScript',
+  version: 2022
+}
+```
+
+The type safety of your object is assured, but we have an error now. 
+`Property 'isDeprecated' is missing in type '{ name: string; version: number; }' but required in type 'Language'. `
+
+In the `Language` type, `isDeprecated` is present, but that key is missing from the `language` object. Either you can add `isDeprecated` to the language, 
+
+```javascript
+const language: Language = {
+  name: 'JavaScript',
+  version: 2022,
+  isDeprecated: false
+}
+```
+
+or make `isDeprecated` optional using `?`
+
+```javascript
+type Language = {
+    name: string,
+    version: number,
+    isDeprecated?: boolean
+}
+```
+
+## Union type
+At times, a variable could have 2 types of value. What we've seen so far, assigning only one data type to a variable, but with the help of union type, you can have the option to add multiple possible data types. 
+
+```javascript
+let fruit: string | null;
+fruit = null;
+fruit = 'apple';
+```
+
+TypeScript will allow you to have `null` or any kind of string value to the `fruit` variable. 
+
+## Intersection type. 
+With intersection type, you can build new types, by extending or combing your existing other types. See the example below. Both `User` and `Employee` can act as independent types, and we created a new type `UserEmployee` from both of them. 
+
+```javascript
+type User = {
+    name: string,
+    age: number
+}
+
+type Employee = {
+    id: number
+};
+
+type UserEmployee = User & Employee;
+
+const employee: UserEmployee = {
+    name: 'Ben',
+    age: 20,
+    id: 102222
+}
+```
+
+## Literal types 
+If your variable can have only a defined set of values, literal types can be used to define those values. 
+
+```javascript
+let position: 'initial' | 'absolute' | 'fixed';
+
+position = 'relative'; // ⛔️ Type '" relative"' is not assignable to type '"initial" | "absolute" | "fixed"'
+```
+
+In the above example, `position` can have only values from `'initial', 'absolute', and 'fixed'`.
+
+
+## Enums
+Enums are useful when you have to define a set of constant values. 
+
+```javascript
+const enum Position {
+    RELATIVE = 'relative',
+    FIXED = 'fixed'
+}
+
+const divPositino = Position.RELATIVE;
+```
+
+Numeric values are also allowed inside enums 
+
+```javascript
+const enum Room {
+    ONE = 1,
+    TWO,
+    THREE
+}
+
+const room = Room.ONE; // 1
+```
+
+One cool thing about numeric enum is that it has auto-incrementing behavior. In the `Room` enum, only `ONE` has the value. But subsequent keys will have auto-incremented values. 
+
+```javascript
+const room = Room.THREE; // = 3 🔥
+```
+---
+Few benefits of using TypesScript, 
+1. Avoid surprises by defining types, and catching errors at development time. 
+2. When you work with a large team, setting a base expectation with types can be helpful and scalable. The initial learning curve can be justified with readable and predictable code. 
+3. Autocomplete suggestions with IDE. If you have a variable of type `string`, your IDE can help you with possible operations you can do on that. 
+
+----
+
+Checkout [TypeScript official documentation](https://www.typescriptlang.org/) for more features, and play around with TypeScript [here](https://www.typescriptlang.org/play)

@@ -12,6 +12,11 @@ body {
   }
 }
 
+.prose :where(code):not(:where([class~="not-prose"] *))::before,
+.prose :where(code):not(:where([class~="not-prose"] *))::after {
+  content: '';
+}
+
 .prose pre {
   background-color: transparent;
   padding-left: 0;

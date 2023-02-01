@@ -4,9 +4,15 @@
     "paths": {
       "@/utils/*": [
         "utils/*"
+      ],
+      "@/components/*": [
+        "components/*"
+      ],
+      "contentlayer/generated": [
+        "./.contentlayer/generated"
       ]
     },
-    "moduleResolution":"node",
+    "moduleResolution": "node",
     "removeComments": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
@@ -31,7 +37,8 @@
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
+    "**/*.tsx",
+    ".contentlayer/generated"
   ],
   "exclude": [
     "node_modules"

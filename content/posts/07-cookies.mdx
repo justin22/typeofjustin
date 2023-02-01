@@ -1,0 +1,122 @@
+---
+title: HTTP Cookies
+date: 2023-01-09
+slug: http-cookies
+position: 7
+published: true
+---
+When you work with Web applications, cookies are useful to store some pieces of information in the browser. 
+
+Some common use cases for cookies are, 
+1. Storing authentication tokens to authorize requests
+2. Has the user closed a Subscribe to Newsletter modal?
+3. User preference on dark theme vs light theme.
+4. Used by most analytics tools such as Google Analytics, Facebook Pixel, Quora Pixel etc.
+
+> ℹ️    Few of the above examples can be stored in local storage or session storage. 
+
+Cookies can be set from both the server and the client. 
+
+### Adding new data to the cookie
+
+#### How to set cookies from the browser, using JavaScript code. 
+
+```js
+// adding new value to cookie
+document.cookie = "theme=dark";
+
+// reading cookie value
+console.log(document.cookie) // 'theme=dark'
+```
+
+#### Setting cookie, from server
+Similar to how your client code can create cookies, your server/API also can add new values to cookies. 
+Let's say you are authenticating a user. User consent is sent to the server, the server validates the user, and sends back a Session Token to the client. 
+
+The client will use this session to authorize further API requests. 
+
+When your server responds to login requests, it can send a session token as a cookie in response headers. 
+
+```js
+Set-Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
+```
+
+### Why would I use cookies over local storage or session storage? 
+1. Cookies are sent to API Calls automatically (unless settings prohibit), so there's no reason to explicitly send them in case of authorization tokens and other necessary cookies. 
+2. Unlike local storage and session storage, you have more control over cookies. You can set which pages can access them, how long should it live, and domain accessibility as well. 
+3. Cookies provide security options which will be discussed in this post. 
+
+### Lifetime of a cookie
+
+It is possible to set a time limit for cookie expiry. 
+
+```js
+// setting expiry on client side
+document.cookie = "theme=dark; expires=Mon, 09 Jan 2023 12:00:00 UTC";
+
+// setting expiry from server response
+Set-Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9; Expires=Mon, 09 Jan 2023 12:00:00 UTC;
+```
+Cookies that have an expiry time are called permanent cookies.
+
+Another type of expiry is when the browser session ends. These are called session cookies. 
+
+### Cookie accessibility in domains
+
+Similar to how you set an expiry time, you can set the Domain attribute as well. 
+```js
+Set-Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9; Domain=typeofjust.in
+```
+If you set a domain value, your cookie will be accessible to the specified domain and its subdomains. If you do not specify a domain, a cookie will be only accessible to the host that sets the cookie. 
+
+### Cookie path
+
+The path attribute is helpful to determine what pages should access your cookie. 
+```js
+Set-Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9; Path=/posts
+```
+With the above example, if I set a cookie on the `/posts` path, 
+```js
+🚫 cookie cannot be read from `/about`.
+✅ cookie accessible from `/posts/1`
+```
+
+## Cookie Security
+
+### SameSite
+
+Cookie has a `SameSite` directive which can be used to control security. This directive is helpful to make sure your cookies are available only to the site that matches the domain which created it.
+
+SameSite directive has 2 possible values. 
+1. None
+2. Lax (default)
+3. Strict
+
+##### SameSite=Lax
+- Cookies will not be sent to cross-site subrequests, but are sent when the user is navigating to the origin site. If your site (Site A) has a backlink on another site (Site B), when the user clicks on the Site A link in Site B, Site A cookies will be sent with the request. 
+
+##### SameSite=Strict
+- Cookies will be sent only in a first-party context (host which set the cookie) and not sent with requests initiated by other sites. 
+
+##### SameSite=none
+- Sent in both first-party context and cross-site requests. 
+- Secure is required to have this setting. `Secure; HttpOnly`
+- HTTP can’t set cookies with Secure directives. 
+
+---
+
+
+## Cookie limits in different browsers
+
+- Firefox 108.0.2, > 30000* cookies
+- Chromium: 109.0.5414.87, 180 cookies
+- Safari Version 16.2, > 10000 *
+
+```js 
+* Firefox was getting pretty hung up with 30000 cookies.
+* Unlike Firefox, Safari had problems at 10000
+```
+
+### Resources
+
+- https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies

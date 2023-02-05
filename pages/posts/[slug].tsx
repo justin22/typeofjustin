@@ -48,7 +48,8 @@ const Post: React.FC = ({ post }: IProps) => {
 
         <div
           className="prose dark:prose-invert 
-          leading-relaxed tracking-wide
+          leading-relaxed tracking-wider
+          text-lg
         dark:prose-a:text-teal-500 hover:prose-a:text-teal-700"
         >
           <MDXContent

@@ -1,12 +1,12 @@
 import React from "react";
 import { parseDate } from "utils/DateUtil";
-import Head from "next/head";
 import Link from "next/link";
 import { allPosts, Post as PostType } from 'contentlayer/generated'
 import { useMDXComponent } from 'next-contentlayer/hooks'
 import { code } from 'components/mdx';
 import { Dictionary } from "@/components/common/dictionary";
-
+import { NextSeo } from 'next-seo';
+import removeMarkdown from 'remove-markdown'
 
 export async function getStaticPaths() {
   const paths = allPosts.filter(post => post.published).map((post) => ({
@@ -33,15 +33,18 @@ type IProps = {
 
 const Post: React.FC = ({ post }: IProps) => {
   const MDXContent = useMDXComponent(post.body.code);
-
+  const metaImage = post.image || `/api/og?title=${post.title}`
   return (
     <>
-      <Head>
-        <title>{`${post.title} - typeofjust.in`}</title>
-        <meta name="description" content={`A blog by Justin George - ${post.title}`} />
-        <link rel="icon" href="/favicon.png" />
-        <meta property="og:image" content={`${process.env.NEXT_PUBLIC_BASE_URL}/api/og?title=${post.title}`} />
-      </Head>
+      <NextSeo
+        title={`${post.title} - typeofjust.in`}
+        description={removeMarkdown(post.body.raw).substring(0, 160)}
+        openGraph={{
+          images: [{
+            url: `${process.env.NEXT_PUBLIC_BASE_URL}/${metaImage}`
+          }]
+        }}
+      />
       <article>
         <div className="mb-10 pb-12">
           <h1 className="text-4xl md:text-6xl tracking-wide font-normal md:font-normal mb-4 text-gray-700 dark:text-gray-200"> {post.title} </h1>

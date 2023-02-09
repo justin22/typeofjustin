@@ -3526,6 +3526,11 @@ next-contentlayer@^0.3.0:
     "@contentlayer/core" "0.3.0"
     "@contentlayer/utils" "0.3.0"
 
+next-seo@^5.15.0:
+  version "5.15.0"
+  resolved "https://registry.yarnpkg.com/next-seo/-/next-seo-5.15.0.tgz#b1a90508599774982909ea44803323c6fb7b50f4"
+  integrity sha512-LGbcY91yDKGMb7YI+28n3g+RuChUkt6pXNpa8FkfKkEmNiJkeRDEXTnnjVtwT9FmMhG6NH8qwHTelGrlYm9rgg==
+
 next@12.2.4:
   version "12.2.4"
   resolved "https://registry.npmjs.org/next/-/next-12.2.4.tgz"
@@ -4143,6 +4148,11 @@ remark-rehype@^10.0.0, remark-rehype@^10.1.0:
     "@types/mdast" "^3.0.0"
     mdast-util-to-hast "^12.1.0"
     unified "^10.0.0"
+
+remove-markdown@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/remove-markdown/-/remove-markdown-0.5.0.tgz#a596264bbd60b9ceab2e2ae86e5789eee91aee32"
+  integrity sha512-x917M80K97K5IN1L8lUvFehsfhR8cYjGQ/yAMRI9E7JIKivtl5Emo5iD13DhMr+VojzMCiYk8V2byNPwT/oapg==
 
 repeat-string@^1.6.1:
   version "1.6.1"

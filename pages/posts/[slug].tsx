@@ -33,7 +33,7 @@ type IProps = {
 
 const Post: React.FC = ({ post }: IProps) => {
   const MDXContent = useMDXComponent(post.body.code);
-  const metaImage = post.image || `/api/og?title=${post.title}`
+  const metaImage = post.image || `api/og?title=${post.title}`
   return (
     <>
       <NextSeo

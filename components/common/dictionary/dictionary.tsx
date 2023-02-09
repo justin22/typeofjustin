@@ -1,10 +1,15 @@
 import * as Tooltip from '@radix-ui/react-tooltip';
 import styles from './dictionary.module.css';
 
+type DictionaryType = {
+  word: string,
+  explanation: string
+}
+
 export const Dictionary = ({
   word,
   explanation
-}) => {
+}: DictionaryType) => {
   return (
     <Tooltip.Provider>
       <Tooltip.Root>

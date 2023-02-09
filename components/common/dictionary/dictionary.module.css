@@ -1,0 +1,104 @@
+.word {
+  @apply text-purple-600;
+}
+
+.content {
+  @apply rounded leading-normal bg-white select-none text-gray-800 text-lg px-4 py-2 drop-shadow-md max-w-sm;
+  animation-duration: 300ms;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+
+.content p {
+  @apply font-semibold mb-2;
+}
+
+@media (prefers-color-scheme: dark) {
+  .word {
+    @apply text-purple-400;
+  }
+
+  .content {
+    @apply bg-gray-200;
+  }
+}
+
+.content[data-state='delayed-open'][data-side='top'] {
+  animation-name: slideDownAndFade;
+}
+
+.content[data-state='delayed-open'][data-side='right'] {
+  animation-name: slideLeftAndFade;
+}
+
+.content[data-state='delayed-open'][data-side='bottom'] {
+  animation-name: slideUpAndFade;
+}
+
+.content[data-state='delayed-open'][data-side='left'] {
+  animation-name: slideRightAndFade;
+}
+
+.arrow {
+  @apply fill-white
+}
+
+@keyframes slideUpAndFade {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+
+  25% {
+    opacity: 1;
+    transform: translateY(40px);
+  }
+
+  50% {
+    transform: translateY(5px);
+  }
+
+  75% {
+    transform: translateY(1px);
+  }
+
+  100% {
+    transform: translateY(20px);
+  }
+}
+
+@keyframes slideRightAndFade {
+  from {
+    opacity: 0;
+    transform: translateX(-2px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideDownAndFade {
+  from {
+    opacity: 0;
+    transform: translateY(-2px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideLeftAndFade {
+  from {
+    opacity: 0;
+    transform: translateX(2px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

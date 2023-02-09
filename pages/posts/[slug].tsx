@@ -5,6 +5,8 @@ import Link from "next/link";
 import { allPosts, Post as PostType } from 'contentlayer/generated'
 import { useMDXComponent } from 'next-contentlayer/hooks'
 import { code } from 'components/mdx';
+import { Dictionary } from "@/components/common/dictionary";
+
 
 export async function getStaticPaths() {
   const paths = allPosts.filter(post => post.published).map((post) => ({
@@ -41,7 +43,7 @@ const Post: React.FC = ({ post }: IProps) => {
         <meta property="og:image" content={`${process.env.NEXT_PUBLIC_BASE_URL}/api/og?title=${post.title}`} />
       </Head>
       <article>
-        <div className="mb-10">
+        <div className="mb-10 pb-12">
           <h1 className="text-4xl md:text-6xl tracking-wide font-normal md:font-normal mb-4 text-gray-700 dark:text-gray-200"> {post.title} </h1>
           <p className="text-md text-gray-500 dark:text-gray-400"> {parseDate(post.date)} </p>
         </div>
@@ -50,11 +52,13 @@ const Post: React.FC = ({ post }: IProps) => {
           className="prose dark:prose-invert 
           leading-relaxed tracking-wider
           text-lg
-        dark:prose-a:text-teal-500 hover:prose-a:text-teal-700"
+          prose-a:no-underline
+        prose-a:text-teal-500 hover:prose-a:text-yellow-600"
         >
           <MDXContent
             components={{
-              code
+              code,
+              Dictionary
             }}
           />
         </div>

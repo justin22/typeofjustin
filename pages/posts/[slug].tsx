@@ -47,7 +47,7 @@ const Post: React.FC = ({ post }: IProps) => {
       />
       <article>
         <div className="mb-10 pb-12">
-          <h1 className="text-4xl md:text-6xl tracking-wide font-normal md:font-normal mb-4 text-gray-700 dark:text-gray-200"> {post.title} </h1>
+          <h1 className="text-3xl md:text-4xl tracking-wide font-normal md:font-normal mb-4 text-gray-700 dark:text-gray-200"> {post.title} </h1>
           <p className="text-md text-gray-500 dark:text-gray-400"> {parseDate(post.date)} </p>
         </div>
 
@@ -67,9 +67,12 @@ const Post: React.FC = ({ post }: IProps) => {
         </div>
       </article>
 
-      <p className="mt-12 text-teal-500 hover:text-teal-600 text-center">
-        <Link href={"/"}> ← Go to home page </Link>
-      </p>
+
+      <div className="text-center">
+        <p className=" mt-12 text-center border hover:border-teal-400 rounded-lg inline-flex py-1 px-3 transition-all duration-200 text-gray-700 hover:bg-teal-50 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:border-gray-700">
+          <Link href={"/"}> ← Go to home page </Link>
+        </p>
+      </div>
 
     </>
   )

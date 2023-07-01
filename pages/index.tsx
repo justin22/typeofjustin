@@ -27,13 +27,14 @@ const Home: React.FC = (props: Props) => {
         }}
       />
 
-      <div>
+      <div className='flex flex-col gap-12'>
         {
-          posts.map(post => {
+          posts.map((post, index) => {
             return (
               <PostItem
                 post={post}
                 key={post.slug}
+                index={index + 1}
               />
             )
           })

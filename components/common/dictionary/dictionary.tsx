@@ -11,7 +11,7 @@ export const Dictionary = ({
   explanation
 }: DictionaryType) => {
   return (
-    <Tooltip.Provider>
+    <Tooltip.Provider delayDuration={0}>
       <Tooltip.Root>
         <Tooltip.Trigger asChild>
           <span className={styles.word}>

@@ -53,10 +53,12 @@ const Post: React.FC = ({ post }: IProps) => {
 
         <div
           className="prose dark:prose-invert 
-          leading-relaxed tracking-wider
+          leading-loose tracking-wider
           text-lg
+          prose-h2:text-teal-400
+          prose-h3:text-teal-500
           prose-a:no-underline
-        prose-a:text-teal-500 hover:prose-a:text-yellow-600"
+        prose-a:text-cyan-500 hover:prose-a:text-yellow-600"
         >
           <MDXContent
             components={{
@@ -69,8 +71,8 @@ const Post: React.FC = ({ post }: IProps) => {
 
 
       <div className="text-center">
-        <p className=" mt-12 text-center border hover:border-teal-400 rounded-lg inline-flex py-1 px-3 transition-all duration-200 text-gray-700 hover:bg-teal-50 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:border-gray-700">
-          <Link href={"/"}> ← Go to home page </Link>
+        <p className=" mt-12 text-center border hover:border-teal-400 rounded-lg inline-flex py-1 px-3 transition-all duration-200 text-gray-500 hover:bg-teal-50 dark:border-gray-700 dark:text-gray-300 dark:bg-gray-900 dark:hover:bg-gray-800 dark:hover:border-gray-700">
+          <Link href={"/"}> ← View all posts </Link>
         </p>
       </div>
 

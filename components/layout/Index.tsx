@@ -12,10 +12,10 @@ const Layout = ({ children }) => {
   }, []);
 
   return (
-    <div>
+    <div className="min-h-screen bg-[conic-gradient(at_bottom_left,_var(--tw-gradient-stops))] from-gray-900 via-fuchsia-900 to-purple-200">
       <Header />
       <main>
-        <div className="container max-w-3xl mx-auto my-12 p-4">
+        <div className="container max-w-3xl mx-auto p-4 py-14">
           {children}
         </div>
       </main>

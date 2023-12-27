@@ -8,6 +8,7 @@ module.exports = {
     extend: {},
     fontFamily: {
       'playfair': ['"Playfair Display"', 'serif'],
+      'albert': ['"Albert Sans"', 'serif'],
       'system': ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
     }
   },

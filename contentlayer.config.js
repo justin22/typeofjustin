@@ -2,7 +2,7 @@ import { defineDocumentType, makeSource } from 'contentlayer/source-files'
 
 export const Post = defineDocumentType(() => ({
   name: 'Post',
-  filePathPattern: `**/*.mdx`,
+  filePathPattern: `posts/**/*.mdx`,
   contentType: 'mdx',
   fields: {
     title: {
@@ -39,7 +39,30 @@ export const Post = defineDocumentType(() => ({
   }
 }))
 
+export const WordOfTheDay = defineDocumentType(() => ({
+  name: 'WordOfTheDay',
+  filePathPattern: `word-of-the-day/**/*.mdx`,
+  contentType: 'mdx',
+  fields: {
+    word: {
+      type: 'string',
+      description: 'The title of the post',
+      required: true,
+    },
+    date: {
+      type: 'date',
+      description: 'The date of the post',
+      required: true,
+    },
+    position: {
+      type: 'number',
+      description: 'The order in which post should appear, max number first',
+      required: true,
+    },
+  }
+}))
+
 export default makeSource({
-  contentDirPath: 'content/posts',
-  documentTypes: [Post],
+  contentDirPath: 'content',
+  documentTypes: [Post, WordOfTheDay],
 })

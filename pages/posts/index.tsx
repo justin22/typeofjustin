@@ -1,23 +1,20 @@
-import { PostItem } from '../components/posts/Index';
-import { allPosts, allWordOfTheDays, Post, WordOfTheDay } from 'contentlayer/generated'
+import { PostItem } from '@/components/posts/post-item';
+import { allPosts, Post } from 'contentlayer/generated'
 import { NextSeo } from 'next-seo';
-import Link from 'next/link';
 
 export async function getStaticProps() {
   const posts = allPosts.filter(p => p.published).sort((a, b) => b.position - a.position).map(post => ({
     title: post.title,
     date: post.date,
     slug: post.slug
-  }));
-
-  const todaysWord = allWordOfTheDays.sort((a, b) => b.position - a.position)[0];
-  return { props: { posts, todaysWord } }
+  }))
+  return { props: { posts } }
 }
 
-type Props = { posts: Post[], todaysWord: WordOfTheDay }
+type Props = { posts: Post[] }
 
 const Home: React.FC = (props: Props) => {
-  const { posts, todaysWord } = props;
+  const { posts } = props;
   return (
     <div>
       <NextSeo
@@ -30,7 +27,6 @@ const Home: React.FC = (props: Props) => {
         }}
       />
 
-      <h1 className='text-gray-400 text-2xl mb-8'>Writing</h1>
       <div className='flex flex-col gap-12'>
         {
           posts.map((post, index) => {
@@ -43,17 +39,6 @@ const Home: React.FC = (props: Props) => {
             )
           })
         }
-      </div>
-
-      <div className='flex mt-20 mb-8 text-2xl gap-2'>
-        <h2 className='text-gray-400'>
-          Word of the day:
-        </h2>
-        <Link href={`/word-of-the-day/${todaysWord.word}`} passHref>
-          <a className='text-gray-700 dark:text-gray-300 font-light group-hover:text-teal-600 dark:group-hover:text-teal-400 tracking-wide font-playfair hover:text-teal-400'>
-            {todaysWord.word}
-          </a>
-        </Link>
       </div>
 
     </div>

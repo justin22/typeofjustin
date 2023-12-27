@@ -37,10 +37,10 @@ export async function getStaticProps({ params }) {
 type IProps = {
   post: PostType,
   nextPost: PostType,
-  previousPost: PostType
+  previousPost?: PostType
 }
 
-const Post: React.FC = ({ post, nextPost, previousPost }: IProps) => {
+const Post: React.FC = ({ post, nextPost }: IProps) => {
   const MDXContent = useMDXComponent(post.body.code);
   const metaImage = post.image || `api/og?title=${post.title}`
   return (

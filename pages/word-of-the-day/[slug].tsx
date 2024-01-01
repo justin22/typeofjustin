@@ -24,8 +24,8 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const wordOfTheDayIndex = allWordOfTheDays.findIndex(post => post.word === params.slug);
   const wordOfTheDay = allWordOfTheDays[wordOfTheDayIndex];
-  const nextWordOfTheDay = allWordOfTheDays[wordOfTheDayIndex + 1] || null;
-  const previousWordOfTheDay = allWordOfTheDays[wordOfTheDayIndex - 1] || null;
+  const nextWordOfTheDay = allWordOfTheDays[wordOfTheDayIndex - 1] || null;
+  const previousWordOfTheDay = allWordOfTheDays[wordOfTheDayIndex + 1] || null;
   return {
     props: {
       wordOfTheDay,

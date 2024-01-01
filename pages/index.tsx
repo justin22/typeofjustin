@@ -10,7 +10,8 @@ export async function getStaticProps() {
     slug: post.slug
   }));
 
-  const todaysWord = allWordOfTheDays.sort((a, b) => b.position - a.position)[0];
+  const words = allWordOfTheDays.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  const todaysWord = words[0];
   return { props: { posts, todaysWord } }
 }
 
@@ -50,7 +51,7 @@ const Home: React.FC = (props: Props) => {
           Word of the day:
         </h2>
         <Link href={`/word-of-the-day/${todaysWord.word}`} passHref>
-          <a className='text-gray-700 dark:text-gray-300 font-light group-hover:text-teal-600 dark:group-hover:text-teal-400 tracking-wide font-playfair hover:text-teal-400'>
+          <a className='text-teal-400 font-light tracking-wide font-playfair hover:text-teal-500'>
             {todaysWord.word}
           </a>
         </Link>

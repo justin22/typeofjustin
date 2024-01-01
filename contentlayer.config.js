@@ -53,12 +53,7 @@ export const WordOfTheDay = defineDocumentType(() => ({
       type: 'date',
       description: 'The date of the post',
       required: true,
-    },
-    position: {
-      type: 'number',
-      description: 'The order in which post should appear, max number first',
-      required: true,
-    },
+    }
   }
 }))
 

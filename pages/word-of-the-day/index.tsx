@@ -9,7 +9,7 @@ type IProps = {
 }
 
 export async function getStaticProps() {
-  const words = allWordOfTheDays.sort((a, b) => a.position - b.position);
+  const words = allWordOfTheDays.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
   return { props: { words } }
 }
 

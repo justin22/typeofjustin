@@ -26,15 +26,17 @@ const Home: React.FC = (props: Props) => {
           }]
         }}
       />
-
-      <div className='flex flex-col gap-12'>
+      <h1 className='text-gray-400 text-lg mb-4'>
+        I try to write sometimes, about new things I learn and about the books I read. Here are some of my recent posts.
+      </h1>
+      <div className='flex flex-col'>
         {
-          posts.map((post, index) => {
+          posts.map((post) => {
             return (
               <PostItem
                 post={post}
                 key={post.slug}
-                index={index + 1}
+                isLast={post.slug === posts[posts.length - 1].slug}
               />
             )
           })

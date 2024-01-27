@@ -5,13 +5,13 @@ export const config = {
   runtime: 'experimental-edge',
 };
 
-export default function (req: NextRequest) {
+export default function ogHandler(req: NextRequest) {
 
   const { searchParams } = new URL(req.url);
   const hasTitle = searchParams.has('title');
-    const title = hasTitle
-      ? searchParams.get('title')?.slice(0, 200)
-      : 'Justin George';
+  const title = hasTitle
+    ? searchParams.get('title')?.slice(0, 200)
+    : 'Justin George';
 
   return new ImageResponse(
     (
@@ -26,7 +26,9 @@ export default function (req: NextRequest) {
           alignItems: 'center',
           justifyContent: 'center',
           fontFamily: 'monospace',
-          background: 'url(https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1674&q=80)'
+          fontWeight: 'bold',
+          color: 'white',
+          background: 'url(https://images.unsplash.com/photo-1638184984605-af1f05249a56?q=80&w=640&auto=format&fit=crop&ixlib=rb-4.0.3)'
         }}
       >
         <span

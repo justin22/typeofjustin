@@ -1,26 +1,30 @@
 import { Post } from "contentlayer/generated";
 import Link from "next/link";
-import { parseDate } from "utils/DateUtil";
 
 type IProps = {
   post: Post,
-  index: number
+  isLast?: boolean
 }
 
-export const PostItem = ({ post, index }: IProps) => {
+export const PostItem = ({ post, isLast = false }: IProps) => {
   return (
-    <Link href={`/posts/${post.slug}`} passHref>
+    <Link href={`/posts/${post.slug}`} passHref key={post._id}>
       <a>
-        <div className="cursor-pointer group">
-          <div className="flex items-start">
-            <div className="pr-4 py-1.5 text-gray-500 transition-all group-hover:text-gray-300 dark:group-hover:text-purple-4 dark:text-gray-500">
-              {index}.
-            </div>
-            <div>
-              <h2 className="font-system text-lg md:text-2xl text-gray-700 dark:text-gray-300 font-light group-hover:text-teal-600 dark:group-hover:text-teal-400 tracking-wide"> {post.title} </h2>
-              <p className="font-light text-sm text-gray-500 group-hover:text-gray-400"> {parseDate(post.date)} </p>
-            </div>
+        <div className={`text-gray-200 text-2xl 
+        ${isLast ? '' : 'border-b'}
+                   border-gray-800 py-8 hover:bg-gray-800
+                  hover:px-4
+                  transition-all duration-200
+                  flex justify-between items-center
+                  group
+                  `}>
+          <div className='flex items-center justify-center gap-6'>
+            <span className='h-2 w-2 rounded bg-gray-600 inline-flex'></span>
+            <p className='group-hover:text-red'>
+              {post.title}
+            </p>
           </div>
+          <i className='bx bx-right-arrow-alt hidden group-hover:visible'></i>
         </div>
       </a>
     </Link>

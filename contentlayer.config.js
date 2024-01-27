@@ -39,25 +39,7 @@ export const Post = defineDocumentType(() => ({
   }
 }))
 
-export const WordOfTheDay = defineDocumentType(() => ({
-  name: 'WordOfTheDay',
-  filePathPattern: `word-of-the-day/**/*.mdx`,
-  contentType: 'mdx',
-  fields: {
-    word: {
-      type: 'string',
-      description: 'The title of the post',
-      required: true,
-    },
-    date: {
-      type: 'date',
-      description: 'The date of the post',
-      required: true,
-    }
-  }
-}))
-
 export default makeSource({
   contentDirPath: 'content',
-  documentTypes: [Post, WordOfTheDay],
+  documentTypes: [Post],
 })

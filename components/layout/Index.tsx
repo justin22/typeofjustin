@@ -1,6 +1,7 @@
 import { useEffect } from "react";
-import Header from "./Header";
+import Header from "./navbar";
 import splitbee from '@splitbee/web';
+import { Footer } from "./footer";
 
 const Layout = ({ children }) => {
 
@@ -12,13 +13,14 @@ const Layout = ({ children }) => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[conic-gradient(at_bottom_left,_var(--tw-gradient-stops))] from-gray-900 via-fuchsia-900 to-purple-200">
+    <div className="min-h-screen bg-gray-900">
       <Header />
       <main>
         <div className="container max-w-3xl mx-auto p-4 py-14">
           {children}
         </div>
       </main>
+      <Footer />
     </div>
   )
 }

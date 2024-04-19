@@ -83,7 +83,7 @@ const Post: React.FC = ({ post, nextPost }: IProps) => {
           !nextPost ?
             <LinkComponent
               link={`/posts`}
-              label={'View all'}
+              label={'View all posts'}
               extraClass={"md:rounded-r-none"}
             />
             :

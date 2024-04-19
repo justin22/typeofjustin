@@ -56,18 +56,18 @@ const Post: React.FC = ({ post, nextPost }: IProps) => {
       />
       <article>
         <div className="mb-10 pb-12">
-          <h1 className="text-3xl md:text-4xl tracking-wide font-normal md:font-normal mb-4 text-gray-700 dark:text-gray-200"> {post.title} </h1>
-          <p className="text-md text-gray-500 dark:text-gray-400"> {parseDate(post.date)} </p>
+          <h1 className="text-3xl md:text-4xl tracking-wide font-semibold mb-4 text-gray-900"> {post.title} </h1>
+          <p className="text-md text-gray-600"> {parseDate(post.date)} </p>
         </div>
 
         <div
-          className="prose dark:prose-invert 
+          className="prose 
           leading-loose tracking-normal
           text-lg
-          prose-h2:text-teal-400
-          prose-h3:text-teal-500
+          prose-h2:text-zinc-900
+          prose-h3:text-zinc-800
           prose-a:no-underline
-        prose-a:text-cyan-500 hover:prose-a:text-yellow-600"
+        prose-a:text-blue-600 hover:prose-a:text-blue-800"
         >
           <MDXContent
             components={{
@@ -95,7 +95,6 @@ const Post: React.FC = ({ post, nextPost }: IProps) => {
               link={`/posts/${nextPost.slug}`}
               label={nextPost.title}
               extraClass={"md:rounded-l-none"}
-              date={nextPost.date}
             />
             :
             null
@@ -106,13 +105,12 @@ const Post: React.FC = ({ post, nextPost }: IProps) => {
   )
 }
 
-function LinkComponent({ link, label, extraClass, date }: { link: string, label: string, extraClass?: string, date?: string }) {
+function LinkComponent({ link, label, extraClass }: { link: string, label: string, extraClass?: string }) {
   return (
     <Link href={link} passHref>
-      <a className={`leading-10 group px-2 rounded-md py-6 justify-start items-start text-md transition-all duration-150 underline underline-offset-8 decoration-pink-500 ${extraClass}`}>
-        <span className="text-gray-400"> {date ? parseDate(date) : ''}</span>
-        <span className="text-gray-300"> {label} </span>
-        <i className='bx bx-right-arrow-alt ml-1 group-hover:ml-2 transition-all duration-150 text-gray-300' ></i>
+      <a className={`leading-10 group px-2 rounded-md py-6 justify-start items-start text-md transition-all duration-150 underline underline-offset-8 decoration-pink-100 ${extraClass}`}>
+        <span className="text-gray-500"> {label} </span>
+        <i className='bx bx-right-arrow-alt ml-1 group-hover:ml-2 transition-all duration-150 text-gray-400' ></i>
       </a>
     </Link>
   )

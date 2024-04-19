@@ -32,8 +32,8 @@ const Home: React.FC = (props: Props) => {
         <Introduction />
       </div>
       <div>
-        <h4 className='text-gray-300 text-lg mb-4'>
-          I try to write sometimes, about new things I learn and about the books I read. Here are some of my recent posts.
+        <h4 className='text-gray-800 text-lg mb-4'>
+          I write sometimes, about new things I learn and about the books I read. Here are some of my recent posts.
         </h4>
         <div className='flex flex-col'>
           {
@@ -50,7 +50,7 @@ const Home: React.FC = (props: Props) => {
         </div>
         <div className='flex justify-end'>
           <Link href='/posts' passHref>
-            <a className='text-gray-400 text-2xl mt-4 flex align-middle gap-2 hover:text-gray-300
+            <a className='text-gray-600 text-2xl mt-4 flex align-middle gap-2 hover:text-gray-500
             transition-all duration-200 hover:gap-4
           '>
               <p>See all posts</p>

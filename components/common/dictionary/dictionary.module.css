@@ -1,5 +1,5 @@
 .word {
-  @apply text-purple-600;
+  @apply text-violet-600;
 }
 
 .content {
@@ -11,16 +11,6 @@
 
 .content p {
   @apply font-semibold mb-2;
-}
-
-@media (prefers-color-scheme: dark) {
-  .word {
-    @apply text-purple-400;
-  }
-
-  .content {
-    @apply bg-gray-200;
-  }
 }
 
 .content[data-state='delayed-open'][data-side='top'] {

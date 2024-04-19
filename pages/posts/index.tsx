@@ -26,8 +26,8 @@ const Home: React.FC = (props: Props) => {
           }]
         }}
       />
-      <h1 className='text-gray-400 text-lg mb-4'>
-        I try to write sometimes, about new things I learn and about the books I read. Here are some of my recent posts.
+      <h1 className='text-gray-800 text-lg mb-4'>
+        I write sometimes, about new things I learn and about the books I read. Here are some of my recent posts.
       </h1>
       <div className='flex flex-col'>
         {

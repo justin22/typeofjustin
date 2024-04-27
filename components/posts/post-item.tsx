@@ -10,7 +10,7 @@ export const PostItem = ({ post, isLast = false }: IProps) => {
   return (
     <Link href={`/posts/${post.slug}`} passHref key={post._id}>
       <a>
-        <div className={`text-gray-700 text-2xl 
+        <div className={`text-gray-700 text-xl md:text-2xl 
         ${isLast ? '' : 'border-b'}
                    border-gray-100 py-8 hover:bg-slate-50
                   hover:px-4

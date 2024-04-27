@@ -50,7 +50,7 @@ const Home: React.FC = (props: Props) => {
         </div>
         <div className='flex justify-end'>
           <Link href='/posts' passHref>
-            <a className='text-gray-600 text-2xl mt-4 flex align-middle gap-2 hover:text-gray-500
+            <a className='text-gray-600 text-lg md:text-2xl mt-4 flex align-middle gap-2 hover:text-gray-500
             transition-all duration-200 hover:gap-4
           '>
               <p>See all posts</p>

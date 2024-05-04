@@ -1,5 +1,5 @@
 .word {
-  @apply text-violet-600;
+  @apply text-purple-500 font-semibold;
 }
 
 .content {

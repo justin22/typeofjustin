@@ -5,6 +5,22 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  font-family: "Teachers", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'Jost', sans-serif;
+}
+
+pre,
+code {
+  font-family: "Roboto Mono", monospace;
+}
+
 .prose :where(code):not(:where([class~="not-prose"] *))::before,
 .prose :where(code):not(:where([class~="not-prose"] *))::after {
   content: '';

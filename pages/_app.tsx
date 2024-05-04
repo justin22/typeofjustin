@@ -2,7 +2,7 @@ import Head from "next/head";
 import Layout from "../components/layout/Index";
 import "../styles/globals.css";
 import NextNProgress from "nextjs-progressbar";
-
+import { Analytics } from "@vercel/analytics/react"
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -16,6 +16,7 @@ function MyApp({ Component, pageProps }) {
       <Layout>
         <Component {...pageProps} />
       </Layout>
+      <Analytics />
     </>
   )
 }

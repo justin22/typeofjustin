@@ -38,8 +38,46 @@ export const Post = defineDocumentType(() => ({
     },
   }
 }))
+export const Interview = defineDocumentType(() => ({
+  name: 'Interview',
+  filePathPattern: `interviews/**/*.mdx`,
+  contentType: 'mdx',
+  fields: {
+    title: {
+      type: 'string',
+      description: 'The title of the interview',
+      required: true,
+    },
+    slug: {
+      type: 'string',
+      description: 'url for the interview',
+      required: true,
+    },
+    date: {
+      type: 'date',
+      description: 'The date of the interview',
+      required: true,
+    },
+    position: {
+      type: 'number',
+      description: 'The order in which interviews should appear, max number first',
+      required: true,
+    },
+    published: {
+      type: 'boolean',
+      description: 'Whether the interview is live or not',
+      required: false,
+      default: false
+    },
+    image: {
+      type: 'string',
+      description: 'meta image for the interview',
+      required: false,
+    },
+  }
+}))
 
 export default makeSource({
   contentDirPath: 'content',
-  documentTypes: [Post],
+  documentTypes: [Post, Interview],
 })

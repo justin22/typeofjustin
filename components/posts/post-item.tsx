@@ -1,14 +1,15 @@
-import { Post } from "contentlayer/generated";
+import { Interview, Post } from "contentlayer/generated";
 import Link from "next/link";
 
 type IProps = {
-  post: Post,
-  isLast?: boolean
+  post: Post | Interview,
+  isLast?: boolean,
+  path?: string
 }
 
-export const PostItem = ({ post, isLast = false }: IProps) => {
+export const PostItem = ({ post, isLast = false, path = 'posts' }: IProps) => {
   return (
-    <Link href={`/posts/${post.slug}`} passHref key={post._id}>
+    <Link href={`/${path}/${post.slug}`} passHref key={post._id}>
       <a>
         <div className={`text-gray-700 text-xl md:text-2xl 
         ${isLast ? '' : 'border-b'}

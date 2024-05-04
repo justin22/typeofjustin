@@ -7,8 +7,7 @@ module.exports = {
   theme: {
     extend: {},
     fontFamily: {
-      'playfair': ['"Inter"', 'serif'],
-      'albert': ['"Inter"', 'serif'],
+      'jost': ['"Jost"', 'serif'],
       'system': ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
     }
   },

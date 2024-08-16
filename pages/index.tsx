@@ -104,7 +104,6 @@ const Home: React.FC = (props: Props) => {
         </Link>
 
       </div>
-
     </div>
   )
 }

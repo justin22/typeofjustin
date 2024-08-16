@@ -7,7 +7,6 @@ module.exports = {
   theme: {
     extend: {},
     fontFamily: {
-      'jost': ['"Jost"', 'serif'],
       'system': ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
     }
   },

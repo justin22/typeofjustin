@@ -11,7 +11,7 @@ const career = [
       "Moved up as Technical Architect where I majorly focused on the Frontend part of the engineering",
       "Became the manager of the Frontend Team at SurveySparrow. Worked with a team of ~25 Frontend developers",
       "Contributed in building the React component library Twigs, the in-house component library of SurveySparrow",
-      "Promoted as Associate Director of Engineering, a story in progress"
+      "Promoted as Associate Director of Engineering, a story in writing"
     ]
   },
   {
@@ -22,7 +22,7 @@ const career = [
     highlights: [
       "Joined as a Frontend developer with React in StayAbode, a co-living space provider.",
       "Another career switch in terms of tech skills, ended up enjoying Frontend development",
-      "Even though the company did not do very well, got a channce to work in startup kinda atmosphere and that was nice."
+      "StayAbode got acquired. Moved to the new company within the same team."
     ]
   },
   {

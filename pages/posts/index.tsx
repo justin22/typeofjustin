@@ -18,13 +18,7 @@ const Home: React.FC = (props: Props) => {
   return (
     <div>
       <NextSeo
-        title="typeof just.in . A website by Justin George"
-        description="A personal website of Justin George"
-        openGraph={{
-          images: [{
-            url: `${process.env.NEXT_PUBLIC_BASE_URL}/api/og`
-          }]
-        }}
+        title="typeof just.in . blog posts by Justin"
       />
       <h1 className='text-gray-800 text-lg mb-4'>
         I write sometimes, about new things I learn and about the books I read. Here are some of my recent posts.

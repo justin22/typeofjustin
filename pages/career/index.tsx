@@ -51,7 +51,6 @@ const career = [
 export default function Career() {
   return (
     <div>
-
       <NextSeo
         title="Career of Justin George"
         description="A personal website of Justin George - Talking about 10 year of career in the Software world"

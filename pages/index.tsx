@@ -1,7 +1,6 @@
 import { Introduction } from '@/components/home/intro';
 import { PostItem } from '../components/posts/Index';
 import { allInterviews, allPosts, Interview, Post } from 'contentlayer/generated'
-import { NextSeo } from 'next-seo';
 import Link from "next/link";
 
 export async function getStaticProps() {
@@ -27,15 +26,6 @@ const Home: React.FC = (props: Props) => {
   const { posts, interviews } = props;
   return (
     <div>
-      <NextSeo
-        title="typeof just.in . A website by Justin George"
-        description="A personal website of Justin George"
-        openGraph={{
-          images: [{
-            url: `${process.env.NEXT_PUBLIC_BASE_URL}/api/og`
-          }]
-        }}
-      />
       <div className='mb-16'>
         <Introduction />
       </div>

@@ -1,16 +1,7 @@
-import { useEffect } from "react";
 import Header from "./navbar";
-import splitbee from '@splitbee/web';
 import { Footer } from "./footer";
 
 const Layout = ({ children }) => {
-
-  useEffect(() => {
-    splitbee.init({
-      scriptUrl: "https://cdn.splitbee.io/sb.js",
-      apiUrl: "https://hive.splitbee.io",
-    })
-  }, []);
 
   return (
     <div className="min-h-screen">

@@ -106,7 +106,7 @@ function TimelineItem({
           {
             item.highlights.map(h => {
               return (
-                <li key={h} className="ps-1 text-sm md:text-md text-gray-600">
+                <li key={h} className="ps-1 text-sm md:text-lg text-gray-600">
                   {h}
                 </li>
               )

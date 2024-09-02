@@ -94,11 +94,11 @@ function TimelineItem({
       </div>
 
       <div className="grow pb-8 group-last:pb-0">
-        <h3 className="mb-1 text-xs text-gray-600">
+        <h3 className="mb-1 text-xs md:text-sm text-gray-600">
           {item.period}
         </h3>
 
-        <p className="font-semibold text-sm text-gray-800">
+        <p className="font-semibold text-sm md:text-lg text-gray-800">
           {item.companyName} ({item.designation})
         </p>
 
@@ -106,7 +106,7 @@ function TimelineItem({
           {
             item.highlights.map(h => {
               return (
-                <li key={h} className="ps-1 text-sm text-gray-600">
+                <li key={h} className="ps-1 text-sm md:text-md text-gray-600">
                   {h}
                 </li>
               )

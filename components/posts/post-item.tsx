@@ -3,11 +3,10 @@ import Link from "next/link";
 
 type IProps = {
   post: Post | Interview,
-  isLast?: boolean,
   path?: string
 }
 
-export const PostItem = ({ post, isLast = false, path = 'posts' }: IProps) => {
+export const PostItem = ({ post, path = 'posts' }: IProps) => {
   return (
     <Link href={`/${path}/${post.slug}`} passHref key={post._id}>
       <a>

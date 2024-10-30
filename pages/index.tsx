@@ -2,7 +2,6 @@ import { Introduction } from '@/components/home/intro';
 import { PostItem } from '../components/posts/Index';
 import { allInterviews, allPosts, Interview, Post } from 'contentlayer/generated'
 import { NextSeo } from 'next-seo';
-import Link from "next/link";
 
 export async function getStaticProps() {
   const posts = allPosts.filter(p => p.published).sort((a, b) => b.position - a.position).map(post => ({
@@ -53,7 +52,6 @@ const Home: React.FC = (props: Props) => {
                 <PostItem
                   post={post}
                   key={post.slug}
-                  isLast={post.slug === posts[posts.length - 1].slug}
                 />
               )
             })
@@ -78,7 +76,6 @@ const Home: React.FC = (props: Props) => {
                   post={post}
                   key={post.slug}
                   path='interviews'
-                  isLast={post.slug === posts[posts.length - 1].slug}
                 />
               )
             })

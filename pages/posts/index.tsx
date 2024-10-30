@@ -36,7 +36,6 @@ const Home: React.FC = (props: Props) => {
               <PostItem
                 post={post}
                 key={post.slug}
-                isLast={post.slug === posts[posts.length - 1].slug}
               />
             )
           })

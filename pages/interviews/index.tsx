@@ -37,7 +37,6 @@ const Home: React.FC = (props: Props) => {
                 post={post}
                 path={'interviews'}
                 key={post.slug}
-                isLast={post.slug === posts[posts.length - 1].slug}
               />
             )
           })

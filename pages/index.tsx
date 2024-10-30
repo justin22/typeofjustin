@@ -48,7 +48,7 @@ const Home: React.FC = (props: Props) => {
         </div>
         <div className='flex flex-col'>
           {
-            posts.slice(0, 5).map((post) => {
+            posts.map((post) => {
               return (
                 <PostItem
                   post={post}
@@ -59,14 +59,6 @@ const Home: React.FC = (props: Props) => {
             })
           }
         </div>
-        <Link href='/posts' passHref>
-          <a className='text-gray-600 text-md flex align-middle gap-2 hover:text-gray-500
-            transition-all duration-200 hover:gap-4 mt-6
-          '>
-            <p>See all posts</p>
-            <i className='bx bx-right-arrow-alt mt-1'></i>
-          </a>
-        </Link>
 
       </div>
 
@@ -80,7 +72,7 @@ const Home: React.FC = (props: Props) => {
         </div>
         <div className='flex flex-col'>
           {
-            interviews.slice(0, 5).map((post) => {
+            interviews.map((post) => {
               return (
                 <PostItem
                   post={post}
@@ -92,16 +84,6 @@ const Home: React.FC = (props: Props) => {
             })
           }
         </div>
-
-        <Link href='/interviews' passHref>
-          <a className='text-gray-600 text-md flex align-middle gap-2 hover:text-gray-500
-            transition-all duration-200 hover:gap-4
-            mt-6
-          '>
-            <p>See all interviews</p>
-            <i className='bx bx-right-arrow-alt mt-1'></i>
-          </a>
-        </Link>
 
       </div>
 

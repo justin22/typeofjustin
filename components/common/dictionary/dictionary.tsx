@@ -20,7 +20,7 @@ export const Dictionary = ({
         </Tooltip.Trigger>
         <Tooltip.Portal>
           <Tooltip.Content className={styles.content} sideOffset={5}>
-            <p className='font-jost text-purple-500 text-2xl'>{word}</p>
+            <p className='text-purple-500 text-2xl'>{word}</p>
             {explanation}
             <Tooltip.Arrow className={styles.arrow} />
           </Tooltip.Content>

@@ -1,7 +1,6 @@
 import { Introduction } from '@/components/home/intro';
 import { PostItem } from '../components/posts/Index';
 import { allInterviews, allPosts, Interview, Post } from 'contentlayer/generated'
-import { NextSeo } from 'next-seo';
 
 export async function getStaticProps() {
   const posts = allPosts.filter(p => p.published).sort((a, b) => b.position - a.position).map(post => ({

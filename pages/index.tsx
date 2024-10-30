@@ -26,15 +26,6 @@ const Home: React.FC = (props: Props) => {
   const { posts, interviews } = props;
   return (
     <div>
-      <NextSeo
-        title="typeof just.in . A website by Justin George"
-        description="A personal website of Justin George"
-        openGraph={{
-          images: [{
-            url: `${process.env.NEXT_PUBLIC_BASE_URL}/api/og`
-          }]
-        }}
-      />
       <div className='mb-16'>
         <Introduction />
       </div>
@@ -83,7 +74,6 @@ const Home: React.FC = (props: Props) => {
         </div>
 
       </div>
-
     </div>
   )
 }

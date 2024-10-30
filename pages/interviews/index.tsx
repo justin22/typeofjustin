@@ -18,13 +18,7 @@ const Home: React.FC = (props: Props) => {
   return (
     <div>
       <NextSeo
-        title="typeof just.in . A website by Justin George"
-        description="A personal website of Justin George"
-        openGraph={{
-          images: [{
-            url: `${process.env.NEXT_PUBLIC_BASE_URL}/api/og`
-          }]
-        }}
+        title="typeof just.in . talking with founders"
       />
       <h1 className='text-gray-800 text-lg mb-4'>
         While building my own products, to better understand the philosophies and the thought process of the makers, I interviewed few of them. Here are some of my recent interviews.

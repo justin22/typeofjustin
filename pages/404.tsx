@@ -2,10 +2,10 @@ import Link from "next/link";
 
 const ErrorPage: React.FC = () => (
   <div className="min-h-screen">
-    <h1 className="text-4xl md:text-6xl tracking-wide font-normal md:font-normal mb-4 text-gray-700 dark:text-gray-200">
+    <h1 className="text-4xl md:text-6xl tracking-wide font-normal md:font-normal mb-4 text-gray-700">
       Page not found
     </h1>
-    <p className="mt-4 text-gray-600 dark:text-gray-300">
+    <p className="mt-4 text-gray-600">
       The page you are looking for does not exist anymore, on never existed.
     </p>
 

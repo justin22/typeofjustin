@@ -5,7 +5,7 @@ const Header = () => (
     <div className="group">
       <span className="group-hover:text-teal-600 text-xl text-blue-900 font-semibold">
         <Link href="/" passHref>
-          Justin&apos;s Blog
+          Justin
         </Link>
       </span>
     </div>

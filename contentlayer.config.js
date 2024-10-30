@@ -1,4 +1,6 @@
+import GithubSlugger from "github-slugger"
 import { defineDocumentType, makeSource } from 'contentlayer/source-files'
+import rehypeSlug from "rehype-slug";
 
 export const Post = defineDocumentType(() => ({
   name: 'Post',
@@ -36,6 +38,29 @@ export const Post = defineDocumentType(() => ({
       description: 'meta image for the post',
       required: false,
     },
+  },
+  computedFields: {
+    headings: {
+      type: "json",
+      resolve: async (doc) => {
+        const regXHeader = /\n(?<flag>#{1,3})\s+(?<content>.+)/g;
+        const slugger = new GithubSlugger()
+        const headings = Array.from(doc.body.raw.matchAll(regXHeader)).map(
+          ({ groups }) => {
+            const flag = groups?.flag;
+            const content = groups?.content;
+            return {
+              level: flag?.length == 1 ? "1"
+                : flag?.length == 2 ? "2"
+                  : "3",
+              text: content,
+              slug: content ? slugger.slug(content) : undefined
+            };
+          }
+        );
+        return headings;
+      },
+    }
   }
 }))
 export const Interview = defineDocumentType(() => ({
@@ -80,4 +105,9 @@ export const Interview = defineDocumentType(() => ({
 export default makeSource({
   contentDirPath: 'content',
   documentTypes: [Post, Interview],
+  mdx: {
+    rehypePlugins: [
+      rehypeSlug,
+    ],
+  },
 })

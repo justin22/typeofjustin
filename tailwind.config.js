@@ -7,6 +7,7 @@ module.exports = {
   theme: {
     extend: {},
     fontFamily: {
+      'mono': ['"Roboto Mono"', 'serif'],
       'system': ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
     }
   },

@@ -63,11 +63,12 @@ const Post: React.FC = ({ post, nextPost }: IProps) => {
         <div
           className="prose 
           leading-loose tracking-normal
-          text-lg
+          text-sm
+          md:text-lg
           prose-h2:text-zinc-900
           prose-h3:text-zinc-800
           prose-a:no-underline
-        prose-a:text-blue-600 hover:prose-a:text-blue-800"
+        prose-a:text-blue-600 hover:prose-a:text-purple-600"
         >
           <MDXContent
             components={{
@@ -77,6 +78,27 @@ const Post: React.FC = ({ post, nextPost }: IProps) => {
           />
         </div>
       </article>
+
+      <div className="fixed left-4 bottom-4">
+        <div className="group flex flex-col items-start">
+          <div className="opacity-0 -ml-4 overflow-hidden shadow-2xl border border-gray-50 backdrop-blur-md bg-gray-800 rounded-xl px-6 py-4 transition-all duration-100 ease-linear group-hover:opacity-100 group-hover:ml-0 max-h-96 overflow-y-auto max-w-sm">
+            <div className="flex flex-col gap-2">
+              <p className="text-gray-400 font-medium font-mono mb-2">Table of contents</p>
+              {post.headings.map(heading => {
+                return (
+                  <a key={`#${heading.slug}`} className="relative flex items-center font-mono truncate" href={`#${heading.slug}`}>
+                    <span className="text-gray-500 mr-2">#</span>
+                    <span className="text-gray-300 truncate">{heading.text}</span>
+                  </a>
+                )
+              })}
+            </div>
+          </div>
+          <button className="hover:outline-1 bg-white  px-3 py-2 border border-gray-200 rounded-2xl flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-align-left"><path d="M15 12H3" /><path d="M17 18H3" /><path d="M21 6H3" /></svg>
+          </button>
+        </div>
+      </div>
 
       <div className="mt-12">
         {

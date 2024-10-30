@@ -63,7 +63,7 @@ const Post: React.FC = ({ post, nextPost }: IProps) => {
         <div
           className="prose 
           leading-loose tracking-normal
-          text-lg
+          text-sm md:text-lg
           prose-h2:text-zinc-900
           prose-h3:text-zinc-800
           prose-a:no-underline

@@ -1,7 +1,6 @@
 import { Introduction } from '@/components/home/intro';
 import { PostItem } from '../components/posts/Index';
 import { allInterviews, allPosts, Interview, Post } from 'contentlayer/generated'
-import Link from "next/link";
 
 export async function getStaticProps() {
   const posts = allPosts.filter(p => p.published).sort((a, b) => b.position - a.position).map(post => ({
@@ -38,25 +37,16 @@ const Home: React.FC = (props: Props) => {
         </div>
         <div className='flex flex-col'>
           {
-            posts.slice(0, 5).map((post) => {
+            posts.map((post) => {
               return (
                 <PostItem
                   post={post}
                   key={post.slug}
-                  isLast={post.slug === posts[posts.length - 1].slug}
                 />
               )
             })
           }
         </div>
-        <Link href='/posts' passHref>
-          <a className='text-gray-600 text-md flex align-middle gap-2 hover:text-gray-500
-            transition-all duration-200 hover:gap-4 mt-6
-          '>
-            <p>See all posts</p>
-            <i className='bx bx-right-arrow-alt mt-1'></i>
-          </a>
-        </Link>
 
       </div>
 
@@ -70,28 +60,17 @@ const Home: React.FC = (props: Props) => {
         </div>
         <div className='flex flex-col'>
           {
-            interviews.slice(0, 5).map((post) => {
+            interviews.map((post) => {
               return (
                 <PostItem
                   post={post}
                   key={post.slug}
                   path='interviews'
-                  isLast={post.slug === posts[posts.length - 1].slug}
                 />
               )
             })
           }
         </div>
-
-        <Link href='/interviews' passHref>
-          <a className='text-gray-600 text-md flex align-middle gap-2 hover:text-gray-500
-            transition-all duration-200 hover:gap-4
-            mt-6
-          '>
-            <p>See all interviews</p>
-            <i className='bx bx-right-arrow-alt mt-1'></i>
-          </a>
-        </Link>
 
       </div>
     </div>

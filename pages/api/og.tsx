@@ -17,39 +17,61 @@ export default function ogHandler(req: NextRequest) {
     (
       <div
         style={{
-          fontSize: 32,
-          width: '100%',
-          height: '100%',
           display: 'flex',
-          flexDirection: 'column',
-          textAlign: 'center',
+          height: '100%',
+          width: '100%',
           alignItems: 'center',
           justifyContent: 'center',
-          fontFamily: 'monospace',
-          fontWeight: 'bold',
-          color: 'white',
-          background: 'url(https://images.unsplash.com/photo-1638184984605-af1f05249a56?q=80&w=640&auto=format&fit=crop&ixlib=rb-4.0.3)'
+          letterSpacing: '-.02em',
+          fontWeight: 700,
+          background: 'white',
         }}
       >
-        <span
+        <div
           style={{
-            fontWeight: 'bold'
-          }}
-        > {title} </span>
-        <span
-          style={{
-            fontSize: 18,
+            left: 42,
+            top: 42,
             position: 'absolute',
-            bottom: 0,
-            marginBottom: 12,
-            letterSpacing: 2,
-            background: 'black',
-            color: 'white',
-            padding: '4px 12px',
-            borderRadius: '12px'
+            display: 'flex',
+            alignItems: 'center',
           }}
-        > typeofjust.in </span>
+        >
+          <span
+            style={{
+              width: 24,
+              height: 24,
+              background: 'black',
+            }}
+          />
+          <span
+            style={{
+              marginLeft: 8,
+              fontSize: 20,
+            }}
+          >
+            typeofjust.in
+          </span>
+        </div>
+        <div
+          style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            justifyContent: 'center',
+            padding: '20px 50px',
+            margin: '0 42px',
+            fontSize: 40,
+            width: 'auto',
+            maxWidth: 550,
+            textAlign: 'center',
+            backgroundColor: 'black',
+            color: 'white',
+            lineHeight: 1.4,
+          }}
+        >
+          {title}
+        </div>
       </div>
+
     ),
     {
       width: 1000,

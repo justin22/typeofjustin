@@ -30,7 +30,7 @@ const Home: React.FC = (props: Props) => {
       </div>
       <div>
         <div className='flex justify-between align-middle mb-4'>
-          <h4 className='text-gray-800 text-xl font-semibold'>
+          <h4 className='text-gray-600 text-xl font-semibold'>
             Writings
           </h4>
 
@@ -53,7 +53,7 @@ const Home: React.FC = (props: Props) => {
 
       <div className='mt-24'>
         <div className='flex justify-between align-middle mb-4'>
-          <h4 className='text-gray-800 text-xl font-semibold'>
+          <h4 className='text-gray-600 text-xl font-semibold'>
             Talking with founders
           </h4>
 

@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export function Introduction() {
   return (
-    <div className="text-lg">
+    <div className="text-lg font-medium text-gray-800">
       <p className="text-gray-800 mb-6"> Hello, I&apos;m Justin</p>
 
       <p className="text-gray-800 leading-8">

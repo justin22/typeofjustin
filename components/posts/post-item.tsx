@@ -10,7 +10,7 @@ export const PostItem = ({ post, path = 'posts' }: IProps) => {
   return (
     <Link href={`/${path}/${post.slug}`} passHref key={post._id}>
       <a>
-        <div className={`text-blue-700 text-md md:text-lg py-2
+        <div className={`text-blue-700 font-medium text-md md:text-lg py-2
                   hover:px-1
                   transition-all duration-200
                   flex justify-between items-center

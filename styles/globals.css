@@ -1,4 +1,4 @@
-@import url('/font/sample.css');
+@import url("/font/sample.css");
 
 @tailwind base;
 @tailwind components;
@@ -9,7 +9,7 @@ html {
 }
 
 body {
-  font-family: 'charter', serif;
+  font-family: "charter", serif;
 }
 
 pre,
@@ -19,7 +19,7 @@ code {
 
 .prose :where(code):not(:where([class~="not-prose"] *))::before,
 .prose :where(code):not(:where([class~="not-prose"] *))::after {
-  content: '';
+  content: "";
 }
 
 .prose pre {

@@ -1,49 +1,10 @@
 {
+  "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/utils/*": [
-        "utils/*"
-      ],
-      "@/components/*": [
-        "components/*"
-      ],
-      "@/constants/*": [
-        "constants/*"
-      ],
-      "contentlayer/generated": [
-        "./.contentlayer/generated"
-      ]
-    },
-    "moduleResolution": "node",
-    "removeComments": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "strict": false,
-    "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
-    "incremental": true,
-    "esModuleInterop": true,
-    "module": "esnext",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "preserve"
+      "@/*": ["src/*"]
+    }
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    ".contentlayer/generated"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["astro-env.d.ts", "**/*.ts", "**/*.tsx"]
 }

@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { PostItem } from '../../components/posts/PostItem';
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('posts');
+const posts = allPosts
+  .filter((p) => p.data.published)
+  .sort((a, b) => b.data.position - a.data.position)
+  .map((entry) => ({
+    title: entry.data.title,
+    date: entry.data.date,
+    slug: entry.slug,
+  }));
+---
+
+<BaseLayout
+  title="typeof just.in . blog posts by Justin"
+  description="I write sometimes, about new things I learn and about the books I read. Here are some of my recent posts."
+>
+  <div>
+    <h1 class="text-gray-800 dark:text-gray-300 text-lg mb-4">
+      I write sometimes, about new things I learn and about the books I read.
+      Here are some of my recent posts.
+    </h1>
+    <div class="flex flex-col">
+      {posts.map((post) => (
+        <PostItem post={post} key={post.slug} client:load />
+      ))}
+    </div>
+  </div>
+</BaseLayout>

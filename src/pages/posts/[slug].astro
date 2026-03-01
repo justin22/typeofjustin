@@ -1,0 +1,103 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { parseDate } from '../../utils/DateUtil';
+import { DictionarySimple } from '../../components/common/dictionary/DictionarySimple';
+
+export async function getStaticPaths() {
+  const allPosts = await getCollection('posts');
+  return allPosts
+    .filter((post) => post.data.published)
+    .map((post) => ({
+      params: { slug: post.slug },
+      props: { post },
+    }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+const sortedPosts = (await getCollection('posts'))
+  .filter((p) => p.data.published)
+  .sort((a, b) => b.data.position - a.data.position);
+const postIndex = sortedPosts.findIndex((p) => p.slug === post.slug);
+const nextPost = sortedPosts[postIndex + 1] ?? null;
+
+const description =
+  (typeof post.body === 'string'
+    ? post.body.replace(/^---[\s\S]*?---/, '').replace(/[#*`\[\]()]/g, '').replace(/\s+/g, ' ').trim().substring(0, 160)
+    : `${post.data.title} - typeofjust.in`) || `${post.data.title} - typeofjust.in`;
+
+const baseUrl = Astro.site?.toString() || 'https://typeofjust.in';
+const metaImage = post.data.image || `${baseUrl}/api/og?title=${encodeURIComponent(post.data.title)}`;
+---
+
+<BaseLayout
+  title={`${post.data.title} - typeofjust.in`}
+  description={description}
+  image={metaImage}
+>
+  <article>
+    <div class="mb-10 pb-8">
+      <h1 class="text-3xl md:text-4xl tracking-wide font-semibold mb-4 text-gray-900 dark:text-gray-300">
+        {post.data.title}
+      </h1>
+      <p class="text-md text-gray-600 dark:text-gray-400">
+        Last updated: {parseDate(post.data.date)}
+      </p>
+    </div>
+
+    <div
+      class="prose dark:prose-invert
+        !leading-[26px] -tracking-tighter
+        text-base
+        md:text-lg
+        decoration-1
+        prose-a:text-sky-700 hover:prose-a:text-sky-800
+        dark:prose-a:decoration-sky-400
+        dark:prose-p:text-gray-400
+        dark:prose-headings:text-gray-300
+        dark:prose-a:text-sky-300 hover:dark:prose-a:text-sky-400
+        dark:prose-li:text-gray-400
+      "
+    >
+      <Content
+        components={{
+          Dictionary: DictionarySimple,
+        }}
+      />
+    </div>
+  </article>
+
+  <div class="mt-12">
+    {!nextPost ? (
+      <a
+        href="/posts"
+        class="leading-10 group px-6 py-4 justify-start items-start text-xl transition-all duration-150
+          w-full flex
+          border border-gray-300 dark:border-gray-800
+          rounded-xl
+          bg-gray-50 hover:bg-gray-100
+          dark:bg-gray-900 dark:hover:bg-black
+          text-gray-600 hover:text-gray-800
+          dark:text-gray-300 hover:dark:text-gray-50"
+      >
+        View all posts
+      </a>
+    ) : null}
+    {nextPost ? (
+      <a
+        href={`/posts/${nextPost.slug}`}
+        class="leading-10 group px-6 py-4 justify-start items-start text-xl transition-all duration-150
+          w-full flex
+          border border-gray-300 dark:border-gray-800
+          rounded-xl
+          bg-gray-50 hover:bg-gray-100
+          dark:bg-gray-900 dark:hover:bg-black
+          text-gray-600 hover:text-gray-800
+          dark:text-gray-300 hover:dark:text-gray-50"
+      >
+        {nextPost.data.title}
+      </a>
+    ) : null}
+  </div>
+</BaseLayout>

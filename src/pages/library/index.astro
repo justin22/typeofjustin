@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const books = [
+  { title: 'Lost and founder' },
+  { title: 'Hooked' },
+  { title: 'Lean startup' },
+];
+---
+
+<BaseLayout>
+  <div class="flex flex-row gap-2">
+    {books.map((book) => (
+      <div
+        key={book.title}
+        class="flex w-6 h-32 py-2 text-gray-300 border border-gray-200 font-system overflow-hidden"
+        style="writing-mode: vertical-lr"
+      >
+        {book.title}
+      </div>
+    ))}
+  </div>
+</BaseLayout>

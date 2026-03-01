@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Introduction } from '../components/home/Introduction';
+import { PostItem } from '../components/posts/PostItem';
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('posts');
+const allInterviews = await getCollection('interviews');
+
+const posts = allPosts
+  .filter((p) => p.data.published)
+  .sort((a, b) => b.data.position - a.data.position)
+  .map((entry) => ({
+    title: entry.data.title,
+    date: entry.data.date,
+    slug: entry.slug,
+  }));
+
+const interviews = allInterviews
+  .filter((p) => p.data.published)
+  .sort((a, b) => b.data.position - a.data.position)
+  .map((entry) => ({
+    title: entry.data.title,
+    date: entry.data.date,
+    slug: entry.slug,
+  }));
+---
+
+<BaseLayout>
+  <div>
+    <div class="mb-16">
+      <Introduction client:load />
+    </div>
+    <div>
+      <div class="flex justify-between align-middle mb-4">
+        <h4 class="text-gray-600 dark:text-gray-300 text-xl font-semibold">
+          Writings
+        </h4>
+      </div>
+      <div class="flex flex-col">
+        {posts.map((post) => (
+          <PostItem post={post} key={post.slug} client:load />
+        ))}
+      </div>
+    </div>
+
+    <div class="mt-24">
+      <div class="flex justify-between align-middle mb-4">
+        <h4 class="text-gray-600 dark:text-gray-300 text-xl font-semibold">
+          Talking with founders
+        </h4>
+      </div>
+      <div class="flex flex-col">
+        {interviews.map((post) => (
+          <PostItem post={post} key={post.slug} path="interviews" client:load />
+        ))}
+      </div>
+    </div>
+  </div>
+</BaseLayout>

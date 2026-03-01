@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { PostItem } from '../../components/posts/PostItem';
+import { getCollection } from 'astro:content';
+
+const allInterviews = await getCollection('interviews');
+const posts = allInterviews
+  .filter((p) => p.data.published)
+  .sort((a, b) => b.data.position - a.data.position)
+  .map((entry) => ({
+    title: entry.data.title,
+    date: entry.data.date,
+    slug: entry.slug,
+  }));
+---
+
+<BaseLayout
+  title="typeof just.in . talking with founders"
+  description="While building my own products, to better understand the philosophies and the thought process of the makers, I interviewed few of them. Here are some of my recent interviews."
+>
+  <div>
+    <h1 class="text-gray-800 dark:text-gray-200 text-lg mb-4">
+      While building my own products, to better understand the philosophies and
+      the thought process of the makers, I interviewed few of them. Here are
+      some of my recent interviews.
+    </h1>
+    <div class="flex flex-col">
+      {posts.map((post) => (
+        <PostItem post={post} path="interviews" key={post.slug} client:load />
+      ))}
+    </div>
+  </div>
+</BaseLayout>

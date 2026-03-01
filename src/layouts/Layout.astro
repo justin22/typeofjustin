@@ -1,0 +1,47 @@
+---
+import '../styles/globals.css';
+import { Analytics } from '@vercel/analytics/react';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+}
+
+const { title = 'Justin George', description = "An online home for Justin's career, writings and everything else", image } = Astro.props;
+const baseUrl = Astro.site?.toString() || 'https://typeofjust.in';
+const ogImage = image
+  ? image.startsWith('http')
+    ? image
+    : `${baseUrl}${image.startsWith('/') ? image : `/${image}`}`
+  : `${baseUrl}/api/og`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    <link rel="icon" href="https://typeofjust.in/favicon.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_in" />
+    <meta property="og:url" content={baseUrl} />
+    <meta property="og:site_name" content="Justin" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@site" />
+    <meta name="twitter:handle" content="@georgemjustin" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link rel="preconnect" href="https://fonts.bunny.net" />
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,401,500,501,700,900&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <slot />
+    <Analytics client:load />
+  </body>
+</html>

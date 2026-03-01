@@ -1,3 +1,11 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": ["astro"],
+  "overrides": [
+    {
+      "files": ["*.config.mjs", "*.config.js", "*.config.cjs"],
+      "rules": {
+        "import/no-unresolved": "off"
+      }
+    }
+  ]
 }

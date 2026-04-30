@@ -25,6 +25,12 @@ const ogImage = image
     <meta name="description" content={description} />
     <title>{title}</title>
     <link rel="icon" href="https://typeofjust.in/favicon.png" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="typeof just.in"
+      href={`${baseUrl.replace(/\/$/, '')}/rss.xml`}
+    />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="en_in" />
     <meta property="og:url" content={baseUrl} />

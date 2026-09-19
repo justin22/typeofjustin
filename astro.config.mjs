@@ -6,6 +6,9 @@ import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
 
 export default defineConfig({
+  redirects: {
+    '/books': '/library',
+  },
   integrations: [
     tailwind(),
     react(),

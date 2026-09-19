@@ -1,0 +1,73 @@
+---
+import Layout from './Layout.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  backHref: string;
+  backLabel: string;
+  date: string;
+  readTime: number;
+  nextHref?: string;
+  nextTitle?: string;
+}
+
+const {
+  title,
+  description,
+  image,
+  backHref,
+  backLabel,
+  date,
+  readTime,
+  nextHref,
+  nextTitle,
+} = Astro.props;
+---
+
+<Layout title={`${title} - typeofjust.in`} description={description} image={image}>
+  <main id="main-content" class="p-2.5 sm:p-6">
+    <div class="mx-auto min-h-[calc(100dvh-1.25rem)] max-w-frame overflow-hidden border border-line-strong bg-paper sm:min-h-[calc(100dvh-3rem)] sm:rounded-[0.25rem] lg:grid lg:h-[calc(100dvh-3rem)] lg:grid-cols-[29%_71%]">
+      <aside class="flex flex-col border-b border-line-strong px-6 py-7 sm:px-10 sm:py-10 lg:min-h-0 lg:border-b-0 lg:border-r lg:px-12 lg:py-12">
+        <a href={backHref} class="focus-ring group inline-flex w-fit items-center gap-4 font-sans text-[0.6875rem] font-semibold uppercase tracking-[0.14em] text-muted no-underline transition-colors hover:text-accent">
+          <span class="motion-arrow-left text-base leading-none" aria-hidden="true">←</span>
+          {backLabel}
+        </a>
+
+        <div class="flex flex-1 items-center py-16 lg:py-12">
+          <h1 class="max-w-[9ch] text-[clamp(3rem,4.5vw,4.75rem)] font-normal leading-[0.96] tracking-[-0.05em] text-balance">
+            {title}
+          </h1>
+        </div>
+
+        <div class="flex items-center justify-between gap-6 font-sans text-xs text-muted">
+          <time>{date}</time>
+          <span>{readTime} min read</span>
+        </div>
+      </aside>
+
+      <article class="min-w-0 lg:h-full lg:overflow-y-auto lg:overscroll-contain">
+        <div class="mx-auto max-w-[70rem] px-6 py-14 sm:px-12 sm:py-20 lg:px-16 lg:pb-28 lg:pt-28 xl:px-20">
+          <div class="prose prose-lg prose-headings:font-serif prose-a:text-accent hover:prose-a:text-ink sm:prose-xl">
+            <slot />
+          </div>
+
+          <nav class="mt-20 border-t border-line pt-7" aria-label="Continue reading">
+            {nextHref && nextTitle ? (
+              <a href={nextHref} class="focus-ring group flex items-center justify-between gap-8 py-4 text-xl no-underline transition-colors hover:text-accent">
+                <span><span class="mb-2 block font-sans text-[0.625rem] font-semibold uppercase tracking-[0.14em] text-muted">Read next</span>{nextTitle}</span>
+                <span class="motion-arrow-right font-sans text-muted" aria-hidden="true">→</span>
+              </a>
+            ) : (
+              <a href={backHref} class="focus-ring group flex items-center justify-between gap-8 py-4 text-xl no-underline transition-colors hover:text-accent">
+                <span>{backLabel}</span>
+                <span class="motion-arrow-right font-sans text-muted" aria-hidden="true">→</span>
+              </a>
+            )}
+          </nav>
+        </div>
+      </article>
+    </div>
+  </main>
+</Layout>

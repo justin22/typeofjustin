@@ -1,7 +1,5 @@
 ---
 import Layout from './Layout.astro';
-import { Navbar } from '../components/layout/Navbar';
-import { Footer } from '../components/layout/Footer';
 
 interface Props {
   title?: string;
@@ -10,16 +8,53 @@ interface Props {
 }
 
 const { title, description, image } = Astro.props;
+const pathname = Astro.url.pathname;
+const navItems = [
+  { href: '/posts', label: 'Writing' },
+  { href: '/interviews', label: 'Interviews' },
+  { href: '/library', label: 'Library' },
+  { href: '/career', label: 'Career' },
+];
 ---
 
 <Layout title={title} description={description} image={image}>
-  <div class="min-h-screen bg-gray-100 dark:bg-black">
-    <Navbar client:load />
-    <main>
-      <div class="container max-w-3xl mx-auto p-4 py-14">
+  <div class="p-2.5 sm:p-6">
+    <div class="page-frame">
+      <header class="flex flex-col gap-5 border-b border-line-strong px-6 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-10">
+        <a href="/" class="focus-ring font-serif text-xl tracking-[-0.025em] text-ink no-underline transition-colors hover:text-accent">
+          Justin George
+        </a>
+        <nav aria-label="Primary navigation">
+          <ul class="flex flex-wrap gap-x-5 gap-y-3 font-sans text-xs text-muted sm:gap-x-7">
+            {navItems.map((item) => {
+              const isActive = pathname === item.href || pathname.startsWith(`${item.href}/`);
+              return (
+                <li>
+                  <a
+                    href={item.href}
+                    aria-current={isActive ? 'page' : undefined}
+                    class:list={[
+                      'focus-ring border-b pb-1 no-underline transition-colors hover:text-accent',
+                      isActive ? 'border-accent text-ink' : 'border-transparent',
+                    ]}
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+      </header>
+      <main id="main-content" class="mx-auto w-full max-w-reading flex-1 px-6 py-12 sm:px-10 sm:py-20">
         <slot />
-      </div>
-    </main>
-    <Footer />
+      </main>
+      <footer class="flex justify-end border-t border-line px-6 py-6 font-sans text-xs text-muted sm:px-10">
+        <div class="flex gap-5">
+          <a class="focus-ring hover:text-accent" href="https://twitter.com/georgemjustin">X / Twitter ↗</a>
+          <a class="focus-ring hover:text-accent" href="https://www.linkedin.com/in/georgejustin22/">LinkedIn ↗</a>
+        </div>
+      </footer>
+    </div>
   </div>
 </Layout>

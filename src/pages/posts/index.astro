@@ -1,32 +1,22 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import { PostItem } from '../../components/posts/PostItem';
+import IndexLayout from '../../layouts/IndexLayout.astro';
 import { getCollection } from 'astro:content';
+import { parseDate } from '../../utils/DateUtil';
 
-const allPosts = await getCollection('posts');
-const posts = allPosts
-  .filter((p) => p.data.published)
-  .sort((a, b) => b.data.position - a.data.position)
-  .map((entry) => ({
-    title: entry.data.title,
-    date: entry.data.date,
-    slug: entry.slug,
-  }));
+const posts = (await getCollection('posts'))
+  .filter((entry) => entry.data.published)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 
-<BaseLayout
-  title="typeof just.in . blog posts by Justin"
-  description="I write sometimes, about new things I learn and about the books I read. Here are some of my recent posts."
->
-  <div>
-    <h1 class="text-gray-800 dark:text-gray-300 text-lg mb-4">
-      I write sometimes, about new things I learn and about the books I read.
-      Here are some of my recent posts.
-    </h1>
-    <div class="flex flex-col">
-      {posts.map((post) => (
-        <PostItem post={post} key={post.slug} client:load />
-      ))}
-    </div>
-  </div>
-</BaseLayout>
+<IndexLayout title="Writing" description="I write about product, software, work, books, and the things I’m learning.">
+  <ol>
+    {posts.map((post) => (
+      <li>
+        <a class="index-row group" href={`/posts/${post.slug}`}>
+          <span class="text-xl leading-snug tracking-[-0.015em]">{post.data.title}</span>
+          <time class="utility-label pt-2 text-muted" datetime={post.data.date.toISOString()}>{parseDate(post.data.date)}</time>
+        </a>
+      </li>
+    ))}
+  </ol>
+</IndexLayout>

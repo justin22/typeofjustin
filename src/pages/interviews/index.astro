@@ -1,33 +1,22 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import { PostItem } from '../../components/posts/PostItem';
+import IndexLayout from '../../layouts/IndexLayout.astro';
 import { getCollection } from 'astro:content';
+import { parseDate } from '../../utils/DateUtil';
 
-const allInterviews = await getCollection('interviews');
-const posts = allInterviews
-  .filter((p) => p.data.published)
-  .sort((a, b) => b.data.position - a.data.position)
-  .map((entry) => ({
-    title: entry.data.title,
-    date: entry.data.date,
-    slug: entry.slug,
-  }));
+const interviews = (await getCollection('interviews'))
+  .filter((entry) => entry.data.published)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 
-<BaseLayout
-  title="typeof just.in . talking with founders"
-  description="While building my own products, to better understand the philosophies and the thought process of the makers, I interviewed few of them. Here are some of my recent interviews."
->
-  <div>
-    <h1 class="text-gray-800 dark:text-gray-200 text-lg mb-4">
-      While building my own products, to better understand the philosophies and
-      the thought process of the makers, I interviewed few of them. Here are
-      some of my recent interviews.
-    </h1>
-    <div class="flex flex-col">
-      {posts.map((post) => (
-        <PostItem post={post} path="interviews" key={post.slug} client:load />
-      ))}
-    </div>
-  </div>
-</BaseLayout>
+<IndexLayout title="Talking with founders" description="Conversations about the choices, constraints, and small breakthroughs behind useful products.">
+  <ol class="border-t border-line-strong">
+    {interviews.map((interview) => (
+      <li>
+        <a class="index-row group" href={`/interviews/${interview.slug}`}>
+          <span class="text-xl leading-snug tracking-[-0.015em]">{interview.data.title}</span>
+          <time class="utility-label pt-2 text-muted" datetime={interview.data.date.toISOString()}>{parseDate(interview.data.date)}</time>
+        </a>
+      </li>
+    ))}
+  </ol>
+</IndexLayout>

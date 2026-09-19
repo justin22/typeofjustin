@@ -1,23 +1,49 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
+import IndexLayout from '../../layouts/IndexLayout.astro';
+import { getBooksByStatus, type BookStatus } from '../../data/books';
 
-const books = [
-  { title: 'Lost and founder' },
-  { title: 'Hooked' },
-  { title: 'Lean startup' },
+const sections: Array<{ status: BookStatus; title: string }> = [
+  { status: 'reading', title: 'Reading now' },
+  { status: 'want-to-read', title: 'Want to read' },
+  { status: 'finished', title: 'Finished' },
 ];
+const spineColors = ['#264e43', '#b75c3b', '#3d4c6f', '#795545', '#62513c', '#32475f'];
 ---
 
-<BaseLayout>
-  <div class="flex flex-row gap-2">
-    {books.map((book) => (
-      <div
-        key={book.title}
-        class="flex w-6 h-32 py-2 text-gray-300 border border-gray-200 font-system overflow-hidden"
-        style="writing-mode: vertical-lr"
-      >
-        {book.title}
-      </div>
-    ))}
+<IndexLayout title="Library" description="Books I’m reading, books waiting on the shelf, and the ones I’ve finished.">
+  <div class="space-y-16">
+    {sections.map((section, sectionIndex) => {
+      const sectionBooks = getBooksByStatus(section.status);
+      return (
+        <section aria-labelledby={`${section.status}-heading`}>
+          <div class="mb-6 border-b border-line-strong pb-4">
+            <h2 id={`${section.status}-heading`} class="text-2xl font-normal tracking-[-0.025em]">{section.title}</h2>
+          </div>
+          <ul class="grid gap-x-8 sm:grid-cols-2">
+            {sectionBooks.map((book, index) => (
+              <li class="border-b border-line">
+                {book.postSlug ? (
+                  <a class="pressable focus-ring group grid grid-cols-[2.25rem_minmax(0,1fr)] gap-4 py-5 no-underline hover:text-accent" href={`/posts/${book.postSlug}`}>
+                    <span class="h-14 rounded-r-sm" style={`background-color:${spineColors[(sectionIndex + index) % spineColors.length]}`} aria-hidden="true"></span>
+                    <span>
+                      <strong class="block font-serif text-lg font-normal leading-snug">{book.title}</strong>
+                      <span class="mt-1.5 block font-sans text-xs text-muted">{book.author} · Read →</span>
+                    </span>
+                  </a>
+                ) : (
+                  <div class="grid grid-cols-[2.25rem_minmax(0,1fr)] gap-4 py-5">
+                    <span class="h-14 rounded-r-sm" style={`background-color:${spineColors[(sectionIndex + index) % spineColors.length]}`} aria-hidden="true"></span>
+                    <span>
+                      <strong class="block font-serif text-lg font-normal leading-snug">{book.title}</strong>
+                      <span class="mt-1.5 block font-sans text-xs text-muted">{book.author}</span>
+                    </span>
+                  </div>
+                )}
+              </li>
+            ))}
+          </ul>
+        </section>
+      );
+    })}
   </div>
-</BaseLayout>
+</IndexLayout>

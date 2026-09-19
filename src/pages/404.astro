@@ -2,17 +2,11 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="Page not found">
-  <div class="min-h-screen">
-    <h1 class="text-4xl md:text-6xl tracking-wide font-normal md:font-normal mb-4 text-gray-700">
-      Page not found
-    </h1>
-    <p class="mt-4 text-gray-600">
-      The page you are looking for does not exist anymore, on never existed.
-    </p>
-
-    <p class="mt-4 hover:underline text-purple-600">
-      <a href="/">Go to home page →</a>
-    </p>
+<BaseLayout title="Page not found — Justin George" description="The requested page could not be found.">
+  <div class="py-10 sm:py-20">
+    <p class="utility-label mb-7 text-muted">Error 404</p>
+    <h1 class="max-w-[8ch] text-5xl font-normal leading-[0.96] tracking-[-0.045em] sm:text-7xl">This page left no forwarding address.</h1>
+    <p class="mt-8 max-w-[32rem] text-lg leading-relaxed text-muted">The link may be old, or the page may never have existed.</p>
+    <a href="/" class="focus-ring mt-10 inline-flex items-center gap-3 border-b border-accent pb-1 text-accent no-underline transition-colors hover:text-ink">Return to the index <span class="font-sans">→</span></a>
   </div>
 </BaseLayout>

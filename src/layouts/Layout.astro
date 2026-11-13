@@ -9,11 +9,7 @@ interface Props {
 
 const { title = 'Justin George', description = "Justin George writes about product, software, UX, and the people who make things.", image } = Astro.props;
 const baseUrl = Astro.site?.toString() || 'https://typeofjust.in';
-const ogImage = image
-  ? image.startsWith('http')
-    ? image
-    : `${baseUrl}${image.startsWith('/') ? image : `/${image}`}`
-  : `${baseUrl}/api/og`;
+const ogImage = new URL(image || '/og.png', baseUrl).href;
 ---
 
 <!doctype html>

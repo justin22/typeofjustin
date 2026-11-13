@@ -26,8 +26,7 @@ const description =
     ? post.body.replace(/^---[\s\S]*?---/, '').replace(/[#*`\[\]()]/g, '').replace(/\s+/g, ' ').trim().substring(0, 160)
     : `${post.data.title} - typeofjust.in`) || `${post.data.title} - typeofjust.in`;
 
-const baseUrl = Astro.site?.toString() || 'https://typeofjust.in';
-const metaImage = post.data.image || `${baseUrl}/api/og?title=${encodeURIComponent(post.data.title)}`;
+const metaImage = post.data.image;
 const wordCount = typeof post.body === 'string' ? post.body.trim().split(/\s+/).length : 0;
 const readTime = Math.max(1, Math.ceil(wordCount / 220));
 const publishedDate = new Intl.DateTimeFormat('en-US', {
